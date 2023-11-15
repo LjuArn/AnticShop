@@ -17,9 +17,6 @@ public class UserEntity extends BaseEntity {
     private String password;
 
     @Column
-    private String firstName;
-
-    @Column
     private String lastName;
 
     @Column
@@ -38,10 +35,82 @@ public class UserEntity extends BaseEntity {
     @OneToMany(mappedBy = "user", fetch =FetchType.EAGER)
     private Set<OrderEntity> orders;
 
+    public UserEntity() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public UserEntity setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UserEntity setPassword(String password) {
+        this.password = password;
+        return this;
+    }
 
 
+    public String getLastName() {
+        return lastName;
+    }
 
-//
+    public UserEntity setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public UserEntity setActive(boolean active) {
+        isActive = active;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public UserEntity setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public UserEntity setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public UserEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Set<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public UserEntity setOrders(Set<OrderEntity> orders) {
+        this.orders = orders;
+        return this;
+    }
+    //
 //    @OneToMany
 //    private List<Comment> comments;
 

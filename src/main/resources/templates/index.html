@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+
+<head th:replace="~{fragments/commons::head}">
+</head>
+
+<body>
+
+<div>
+    <header th:replace="~{fragments/commons::navigation}">
+    </header>
+</div>
+
+
+<div class="container-fluid">
+
+    <h5 class="text-center mt-5" style="color: #34ce57"> Welcome to Antic Shop,
+
+        <th:block sec:authorize='isAuthenticated()'>
+            <th:block sec:authentication="name"> </th:block>
+        </th:block>
+
+        <th:block sec:authorize='!isAuthenticated()'>
+           Friend!!!!!!
+        </th:block>
+
+    </h5>
+    <h5 class="text-center mt-5" style="color: #34ce57"> This is a place where you can see beautiful items and enjoy them!!
+    </h5>
+
+    <h5 class="text-center mt-5" style="color: #34ce57"> Or you can have got some of them!!  Enjoy !!!
+    </h5>
+</div>
+
+
+</body>
+
+<footer th:replace="~{fragments/commons::footer}">
+</footer>
+</html>
