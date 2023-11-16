@@ -67,6 +67,8 @@ public class UserController {
         model.addAttribute("username", username);
         model.addAttribute("badCredentials", true);
 
+
+
         return "login";
     }
 
