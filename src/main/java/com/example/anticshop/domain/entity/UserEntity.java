@@ -17,7 +17,7 @@ public class UserEntity extends BaseEntity {
     private String password;
 
     @Column
-    private String lastName;
+    private String fullName;
 
     @Column
     private boolean isActive;
@@ -57,12 +57,12 @@ public class UserEntity extends BaseEntity {
     }
 
 
-    public String getLastName() {
-        return lastName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public UserEntity setLastName(String lastName) {
-        this.lastName = lastName;
+    public UserEntity setFullName(String fullName) {
+        this.fullName = fullName;
         return this;
     }
 
