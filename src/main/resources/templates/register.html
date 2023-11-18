@@ -24,32 +24,17 @@
             class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
         <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="firstName" class="text-white font-weight-bold">First Name</label>
-                <input th:field="*{firstName}"
+                <label for="fullName" class="text-white font-weight-bold">Full name</label>
+                <input th:field="*{fullName}"
                        th:errorclass="is-invalid"
-                       id="firstName"
-                       name="firstName"
+                       id="fullName"
+                       name="fullName"
                        type="text"
-                       required minlength="1" maxlength="20"
+                       required minlength="5" maxlength="20"
                        class="form-control"
-                       placeholder="First name"/>
+                       placeholder="Full name"/>
                 <p class="invalid-feedback  alert-danger">
-                    First name length must be between 2 and 20 characters./First name is required.
-                </p>
-            </div>
-            <div class="form-group col-md-6 mb-3">
-                <label for="lastName" class="text-white font-weight-bold">Last Name</label>
-                <input th:field="*{lastName}"
-                       th:errorclass="is-invalid"
-                       id="lastName"
-                       name="lastName"
-                       type="text"
-                       required minlength="1" maxlength="20"
-                       class="form-control"
-                       aria-describedby="lastNameHelpInline"
-                       placeholder="Last name"/>
-                <p id="lastNameHelpInline" class="invalid-feedback errors alert alert-danger">
-                    Last name length must be between 2 and 20 characters./Last name is required.
+                    Full name length must be between 5 and 20 characters./Full name is required.
                 </p>
             </div>
         </div>
@@ -62,11 +47,11 @@
                        id="username"
                        name="username"
                        type="text"
-                       required minlength="1" maxlength="20"
+                       required minlength="3" maxlength="20"
                        class="form-control"
                        aria-describedby="usernameHelpInline"
                        placeholder="Username"/>
-                <small class="invalid-feedback errors alert alert-danger">Username length must be between 2 and 20 characters</small>
+                <small class="invalid-feedback errors alert alert-danger">Username length must be between 3 and 20 characters</small>
             </div>
 
 <!--            <small th:if="${isNameExist}" id="usernameUniqueError"-->

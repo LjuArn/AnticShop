@@ -52,5 +52,4 @@ public class UserRegisterController {
         return "redirect:login";
     }
 
-
 }

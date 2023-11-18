@@ -16,26 +16,25 @@
 
 <body>
 <header th:fragment="navigation">
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-<!--        <a class="navbar-brand" href="/"><img alt="car picture" src="/images/car.png" class="logo"></a>-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: orange">
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto col-12 justify-content-between">
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+
                 <th:block sec:authorize="isAuthenticated()">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/brands/all">All Brands</a>
+                        <a class="nav-link" href="/items/orders/all">All orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/offers/add">Add Offer</a>
+                        <a class="nav-link" href="/items/medals/all">All medals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/offers/all">All Offers</a>
+                        <a class="nav-link" href="/items/coins/all">All coins</a>
                     </li>
                     <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
                         <a class="nav-link dropdown-toggle"
@@ -46,10 +45,8 @@
                             Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/brands">Add Brands</a>
-                            <a class="dropdown-item" href="/">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/">Something else here</a>
+                            <a class="dropdown-item" href="/items/add">Add new item</a>
+                            <a class="dropdown-item" href="/users/all">All users</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -85,7 +82,7 @@
 <footer th:fragment="footer"
         class="footer bg-blur rounded">
     <div class="container-fluid text-center">
-        <div class="h5 text-white">
+        <div class="h4 text-center mt-5" style="font-family: Georgia, serif; color: #34ce57" >
             &copy; Antic LL 2023. All rights reserved.
         </div>
     </div>
@@ -94,3 +91,6 @@
 
 </body>
 </html>
+
+
+//class="h5 text-white"

@@ -19,6 +19,8 @@ public class ItemEntity extends BaseEntity {
     private BigDecimal price;
     @Column
     private LocalDate published_on;
+    @Column(columnDefinition = "TEXT")
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -65,6 +67,15 @@ public class ItemEntity extends BaseEntity {
 
     public ItemEntity setPublished_on(LocalDate published_on) {
         this.published_on = published_on;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public ItemEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 
