@@ -28,6 +28,50 @@ body {
      text-align: center;
 }
 
+
+
+
+
+.wrapper {
+     display: grid;
+     grid-gap: 20px;
+}
+
+
+
+/* About */
+.info {
+     margin-top: 5rem;
+     display: grid;
+     grid-gap: 2rem;
+     grid-template-columns: 1fr 1fr 1fr;
+     background-color: #005cbf;
+     color: white;
+     padding: 5rem;
+     border-radius: 5rem;
+}
+
+.info div {
+     text-align: center;
+}
+
+.info div:nth-child(1) {
+     background-image: url("/images/Smiles.png");
+     background-size: cover;
+     border-bottom-right-radius: 5rem;
+     border-top-left-radius: 5rem;
+}
+
+.info div:nth-child(3) {
+     background-image: url("/images/Smiles.png");
+     background-size: cover;
+     border-bottom-left-radius: 5rem;
+     border-top-right-radius: 5rem;
+}
+
+
+
+
 .brand-section {
      background-image: linear-gradient(to bottom right, rgba(220, 220, 220, 0.9), rgba(255, 255, 255, 0.9));
 }

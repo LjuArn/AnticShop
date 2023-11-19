@@ -1,7 +1,7 @@
 package com.example.anticshop.repository;
 
 import com.example.anticshop.domain.entity.ItemEntity;
-import com.example.anticshop.domain.enums.CategoryNameEnum;
+import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

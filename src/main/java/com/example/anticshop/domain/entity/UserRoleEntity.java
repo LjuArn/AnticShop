@@ -1,6 +1,6 @@
 package com.example.anticshop.domain.entity;
 
-import com.example.anticshop.domain.enums.UserRoleEnum;
+import com.example.anticshop.domain.entity.enums.UserRoleEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

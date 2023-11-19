@@ -37,9 +37,11 @@ VALUES ('Орден „За гражданска заслуга“', 'Bulgarian 
         'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1, 1),
        ('Орден „За гражданска з“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
         'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1, 1),
-       ('Орден „За гражданска за“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1, 1),
-       ('Орден „За граждана“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1, 1);
+       ('Медал Храброст „За гражданска за“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 2, 1),
+       ('Медал Храброст 4 степен', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 2, 1),
+       ('Монета', 'Bulgarian монета сребро', 50.00, CURRENT_TIMESTAMP,
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 3, 1);;
 
 

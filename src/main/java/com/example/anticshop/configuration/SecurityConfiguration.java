@@ -1,7 +1,7 @@
 package com.example.anticshop.configuration;//package com.example.mobilele2023new.configuration;
 
 
-import com.example.anticshop.domain.enums.UserRoleEnum;
+import com.example.anticshop.domain.entity.enums.UserRoleEnum;
 import com.example.anticshop.repository.UserRepository;
 import com.example.anticshop.service.AnticUserDetailService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;

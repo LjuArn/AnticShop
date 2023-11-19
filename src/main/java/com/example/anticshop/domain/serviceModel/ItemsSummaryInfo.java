@@ -3,7 +3,7 @@ package com.example.anticshop.domain.serviceModel;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class OrderSummeryInfo {
+public class ItemsSummaryInfo {
 
     private Long id;
     private String name;
@@ -12,14 +12,14 @@ public class OrderSummeryInfo {
     private LocalDate published_on;
     private String imageUrl;
 
-    public OrderSummeryInfo() {
+    public ItemsSummaryInfo() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public OrderSummeryInfo setId(Long id) {
+    public ItemsSummaryInfo setId(Long id) {
         this.id = id;
         return this;
     }
@@ -28,7 +28,7 @@ public class OrderSummeryInfo {
         return name;
     }
 
-    public OrderSummeryInfo setName(String name) {
+    public ItemsSummaryInfo setName(String name) {
         this.name = name;
         return this;
     }
@@ -37,7 +37,7 @@ public class OrderSummeryInfo {
         return description;
     }
 
-    public OrderSummeryInfo setDescription(String description) {
+    public ItemsSummaryInfo setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -46,7 +46,7 @@ public class OrderSummeryInfo {
         return price;
     }
 
-    public OrderSummeryInfo setPrice(BigDecimal price) {
+    public ItemsSummaryInfo setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -55,7 +55,7 @@ public class OrderSummeryInfo {
         return published_on;
     }
 
-    public OrderSummeryInfo setPublished_on(LocalDate published_on) {
+    public ItemsSummaryInfo setPublished_on(LocalDate published_on) {
         this.published_on = published_on;
         return this;
     }
@@ -64,7 +64,7 @@ public class OrderSummeryInfo {
         return imageUrl;
     }
 
-    public OrderSummeryInfo setImageUrl(String imageUrl) {
+    public ItemsSummaryInfo setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }

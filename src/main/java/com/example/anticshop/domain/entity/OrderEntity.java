@@ -1,6 +1,6 @@
 package com.example.anticshop.domain.entity;
 
-import com.example.anticshop.domain.enums.OrderConditionEnum;
+import com.example.anticshop.domain.entity.enums.OrderConditionEnum;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

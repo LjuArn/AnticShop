@@ -3,7 +3,7 @@ package com.example.anticshop.service;
 
 import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.UserRoleEntity;
-import com.example.anticshop.domain.enums.UserRoleEnum;
+import com.example.anticshop.domain.entity.enums.UserRoleEnum;
 import com.example.anticshop.domain.serviceModel.UserServiceModel;
 import com.example.anticshop.repository.UserRepository;
 import org.modelmapper.ModelMapper;

@@ -1,7 +1,7 @@
 package com.example.anticshop.domain.entity;
 
 
-import com.example.anticshop.domain.enums.CategoryNameEnum;
+import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import jakarta.persistence.*;
 
 @Entity
