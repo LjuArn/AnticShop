@@ -15,7 +15,7 @@ public class ItemBindingModel {
     @Size(min = 5)
     private String description;
     private BigDecimal price;
-    @Size(min = 5, max= 512)
+   // @Size(min = 5, max= 512)
     private String imageUrl;
     @NotNull
     private CategoryNameEnum category;

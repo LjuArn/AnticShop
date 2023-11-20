@@ -2,6 +2,7 @@ package com.example.anticshop.service;
 
 import com.example.anticshop.domain.serviceModel.ItemAddServiceModel;
 import com.example.anticshop.domain.serviceModel.ItemsSummaryInfo;
+import com.example.anticshop.domain.viewModel.ItemsViewModel;
 
 import java.util.List;
 
@@ -13,4 +14,8 @@ public interface ItemService {
     List<ItemsSummaryInfo>  getAllCoins();
 
     void addNewItem(ItemAddServiceModel itemAddServiceModel);
+
+    List<ItemsViewModel> findAllItemsViewModel();
+
+    ItemsViewModel findById(Long id);
 }

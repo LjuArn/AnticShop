@@ -4,6 +4,7 @@ import com.example.anticshop.domain.entity.ItemEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import com.example.anticshop.domain.serviceModel.ItemAddServiceModel;
 import com.example.anticshop.domain.serviceModel.ItemsSummaryInfo;
+import com.example.anticshop.domain.viewModel.ItemsViewModel;
 import com.example.anticshop.repository.ItemRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -73,8 +74,75 @@ public class ItemServiceImpl implements ItemService {
         itemRepository.saveAndFlush(item);
     }
 
+    @Override
+    public List<ItemsViewModel> findAllItemsViewModel() {
+        return itemRepository
+                .findAll()
+                .stream()
+                .map(itemEntity -> {
+                    ItemsViewModel itemsViewModel = modelMapper.map(itemEntity, ItemsViewModel.class);
+
+                    if (itemEntity.getImageUrl().isEmpty()) {
+                        itemsViewModel.setImageUrl("/images/SvAleksandar1881.png");
+                    } else {
+                        itemsViewModel.setImageUrl(itemEntity.getImageUrl());
+                    }
+
+                    itemsViewModel.setCategory(itemEntity.getCategory().getName().name());
+                    return itemsViewModel;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public ItemsViewModel findById(Long id) {
+        return itemRepository.findById(id)
+                .map(itemEntity -> {
+                    ItemsViewModel itemsViewModel = modelMapper.map(itemEntity, ItemsViewModel.class);
+                    return itemsViewModel;
+                }).orElse(null);
+    }
+
 
 }
+
+
+//return itemRepository.findById(id)
+//        .map(itemEntity -> {
+//        ItemViewModel itemViewModel =
+//        modelMapper.map(itemEntity, ItemViewModel.class);
+
+//        itemViewModel.setImgUrl(String.format("/img/%s-%s.jpg", itemEntity.getGender(),
+//        itemEntity.getCategory().getCategoryNameEnum().name()));
+//        return itemViewModel;
+//        }).orElse(null);
+
+
+
+
+
+
+//       routeViewModel.setPicture(routeEntity.getPictures().stream().findFirst().get().getUrl());
+
+//    @Override
+//    public List<RouteViewModel> findAllRoutesViewModel() {
+//        return routeRepository
+//                .findAll()
+//                .stream()
+//                .map(routeEntity -> {
+//                    RouteViewModel routeViewModel = modelMapper.map(routeEntity, RouteViewModel.class);
+//
+//                    if (routeEntity.getPictures().isEmpty()) {
+//                        routeViewModel.setPicture("/imiges/pic1.jpg");
+//                    } else {
+//                        routeViewModel.setPicture(routeEntity.getPictures().stream().findFirst().get().getUrl());
+//                    }
+//
+//                    return routeViewModel;
+//                })
+//                .collect(Collectors.toList());
+//    }
+//
 
 
 //   @Override
