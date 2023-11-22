@@ -30,10 +30,10 @@
             </div>
             <ul class="offer-details list-group list-group-flush">
                 <li class="list-group-item">
-                    <div class="card-text"><span>• Description:</span>
-                       <th:block th:text="*{description}">zxssdsdsds</th:block>
-                    </div>
 
+                    <div class="card-text"><span>• Year of issue:</span>
+                        <th:block th:text="*{year}">123</th:block>
+                    </div>
                     <div class="card-text"><span>• Price:</span>
                         <th:block th:text="*{price}">123</th:block>
                     </div>
@@ -45,7 +45,11 @@
                 </li>
             </ul>
             <div class="card-body">
-                <a class="card-link" th:href="@{/items/details/{id}(id=*{id})}" >Details</a>
+                <a class="card-link" th:href="@{/items/details/{id}(id=${o.id})}" >Details</a>
+
+
+<!--                th:action="@{/products/edited/{id}(id=${product.id})}" -->
+
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 package com.example.anticshop.service;
 
 import com.example.anticshop.domain.serviceModel.ItemAddServiceModel;
-import com.example.anticshop.domain.serviceModel.ItemsSummaryInfo;
+import com.example.anticshop.domain.viewModel.ItemsSummaryInfo;
 import com.example.anticshop.domain.viewModel.ItemsViewModel;
 
 import java.util.List;
@@ -17,5 +17,8 @@ public interface ItemService {
 
     List<ItemsViewModel> findAllItemsViewModel();
 
-    ItemsViewModel findById(Long id);
+
+    ItemsViewModel findByIdItem(Long id);
+
+    void deleteItem(Long id);
 }

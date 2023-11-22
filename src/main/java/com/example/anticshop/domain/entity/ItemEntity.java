@@ -21,6 +21,8 @@ public class ItemEntity extends BaseEntity {
     private LocalDate published_on;
     @Column(columnDefinition = "TEXT")
     private String imageUrl;
+    @Column
+    private Integer year;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -76,6 +78,15 @@ public class ItemEntity extends BaseEntity {
 
     public ItemEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public ItemEntity setYear(Integer year) {
+        this.year = year;
         return this;
     }
 

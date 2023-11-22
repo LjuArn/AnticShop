@@ -32,16 +32,16 @@ VALUES ('ORDERS', 'Some Bulgarian royal orders from 1887 to 1943'),
        ('COINS', 'Some Bulgarian coins from 1887 to 1943');
 
 
-INSERT INTO items (name, description, price, published_on, image_url, category_id, user_id)
+INSERT INTO items (name, description, price, published_on, image_url, year, category_id, user_id)
 VALUES ('Орден „За гражданска заслуга“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1, 1),
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1881, 1, 1),
        ('Орден „За гражданска з“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1, 1),
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1886, 1, 1),
        ('Медал Храброст „За гражданска за“', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 2, 1),
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1887, 2, 1),
        ('Медал Храброст 4 степен', 'Bulgarian royal orders', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 2, 1),
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1888, 2, 1),
        ('Монета', 'Bulgarian монета сребро', 50.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 3, 1);;
+        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1900, 3, 1);;
 
 

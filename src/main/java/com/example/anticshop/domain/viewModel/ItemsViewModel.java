@@ -12,7 +12,8 @@ public class ItemsViewModel {
     private String imageUrl;
     private String name;
     private BigDecimal price;
-    private String category;
+    private Integer year;
+    private CategoryNameEnum category;
 
 
     public ItemsViewModel() {
@@ -63,11 +64,20 @@ public class ItemsViewModel {
         return this;
     }
 
-    public String getCategory() {
+    public Integer getYear() {
+        return year;
+    }
+
+    public ItemsViewModel setYear(Integer year) {
+        this.year = year;
+        return this;
+    }
+
+    public CategoryNameEnum getCategory() {
         return category;
     }
 
-    public ItemsViewModel setCategory(String category) {
+    public ItemsViewModel setCategory(CategoryNameEnum category) {
         this.category = category;
         return this;
     }

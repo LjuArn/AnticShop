@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
@@ -33,7 +34,7 @@
             <div th:each="i : ${items}"
                  th:object="${i}"
                  class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
-                <a >
+                <a   th:href="@{/items/details/{id} (id = *{id})}">
                     <div class="card-body pb-1">
                         <h5 class="card-title text-center" th:text="|Category - *{category}|">Category</h5>
                     </div>
@@ -45,23 +46,25 @@
                     </div>
                     <ul class="offer-details list-group list-group-flush">
                         <li class="list-group-item">
+                            <div class="card-text text-center"><span th:text="|Year of issue - *{year}|">Item price</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="offer-details list-group list-group-flush">
+                        <li class="list-group-item">
                             <div class="card-text text-center"><span th:text="|Item price - *{price}|">Item price</span>
                             </div>
                         </li>
                     </ul>
 
                     <div class="card-body">
-<!--                        <a class="card-link" th:href="@{/items/details/{id}(id=*{id})}" >Details</a>-->
-
-                        <a class="card-link" th:href="@{/items/details/{id}(id=*{id})}"> D</a>
+<!--                        <a class="card-link" th:href="@{/items/details/{id} (id = *{id})}"> Details </a>-->
                     </div>
                 </a>
             </div>
         </div>
     </div>
-
-
-
 
 </main>
 
@@ -69,10 +72,6 @@
 <footer th:replace="~{fragments/commons::footer}">
 </footer>
 </html>
-
-
-<!--th:href="@{/items/details/{id}(id = *{id})}"-->
-<!--th:href="@{/items/details/{id}(id = *{id})}"-->
 
 
 

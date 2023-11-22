@@ -1,9 +1,6 @@
 package com.example.anticshop.domain.serviceModel;
 
-import com.example.anticshop.domain.entity.CategoryEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
@@ -14,6 +11,7 @@ public class ItemAddServiceModel {
     private String description;
     private BigDecimal price;
     private String imageUrl;
+    private Integer year;
     private CategoryNameEnum category;
 
     public ItemAddServiceModel() {
@@ -61,6 +59,15 @@ public class ItemAddServiceModel {
 
     public ItemAddServiceModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public ItemAddServiceModel setYear(Integer year) {
+        this.year = year;
         return this;
     }
 

@@ -9,10 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -94,12 +91,46 @@ private final ModelMapper modelMapper;
 
 
     @GetMapping("/details/{id}")
-    public String detailsItem(@PathVariable("id")Long id, Model model) {
+    public String detailsItem(@PathVariable Long id, Model model) {
 
-       model.addAttribute("item", this.itemService.findById(id));
+       model.addAttribute("item", itemService.findByIdItem(id));
 
         return "details-item";
     }
+
+
+    @DeleteMapping("/details/{id}")
+    public String delete(@PathVariable Long id) {
+
+        itemService.deleteItem(id);
+        return "redirect:/items/all";
+    }
+
+
+
+}
+//    @DeleteMapping("/details/{id}")
+//    public String delete(@PathVariable Long id,
+//                         @AuthenticationPrincipal UserDetails principal) {
+//
+//        itemService.deleteItem(id);
+//        return "redirect:/items/all";
+//    }
+
+
+
+//    @GetMapping("/edit/{id}")
+//    public String getEditProduct(@PathVariable("id") Long productId,
+//                                 Model model) {
+//
+//        model.addAttribute(PRODUCT, this.productService.getProductById(productId));
+//
+//        return "edit-product";
+//    }
+
+
+
+
 
 
 
@@ -111,8 +142,3 @@ private final ModelMapper modelMapper;
 //
 //        return modelAndView;
 //    }
-
-}
-
-
-// itemAddServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));

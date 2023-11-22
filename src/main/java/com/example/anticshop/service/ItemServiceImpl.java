@@ -3,9 +3,11 @@ package com.example.anticshop.service;
 import com.example.anticshop.domain.entity.ItemEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import com.example.anticshop.domain.serviceModel.ItemAddServiceModel;
-import com.example.anticshop.domain.serviceModel.ItemsSummaryInfo;
+import com.example.anticshop.domain.viewModel.ItemsSummaryInfo;
 import com.example.anticshop.domain.viewModel.ItemsViewModel;
 import com.example.anticshop.repository.ItemRepository;
+import com.example.anticshop.service.exeption.ObjectNotFoundException;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -80,28 +82,59 @@ public class ItemServiceImpl implements ItemService {
                 .findAll()
                 .stream()
                 .map(itemEntity -> {
-                    ItemsViewModel itemsViewModel = modelMapper.map(itemEntity, ItemsViewModel.class);
+                    ItemsViewModel itemsViewModel =
+                            modelMapper.map(itemEntity, ItemsViewModel.class);
 
-                    if (itemEntity.getImageUrl().isEmpty()) {
-                        itemsViewModel.setImageUrl("/images/SvAleksandar1881.png");
-                    } else {
-                        itemsViewModel.setImageUrl(itemEntity.getImageUrl());
-                    }
+//                    if (itemEntity.getImageUrl().isEmpty()) {
+//                        itemsViewModel.setImageUrl("/images/SvAleksandar1881.png");
+//                    } else {
+//                        itemsViewModel.setImageUrl(itemEntity.getImageUrl());
+//                    }
 
-                    itemsViewModel.setCategory(itemEntity.getCategory().getName().name());
+                    itemsViewModel.setCategory(itemEntity.getCategory().getName());
                     return itemsViewModel;
                 })
                 .collect(Collectors.toList());
     }
 
     @Override
-    public ItemsViewModel findById(Long id) {
+    public ItemsViewModel findByIdItem(Long id) {
         return itemRepository.findById(id)
-                .map(itemEntity -> {
-                    ItemsViewModel itemsViewModel = modelMapper.map(itemEntity, ItemsViewModel.class);
-                    return itemsViewModel;
-                }).orElse(null);
+                .map(itemEntity -> modelMapper.map(itemEntity, ItemsViewModel.class))
+                .orElseThrow(() -> new ObjectNotFoundException("Item with id" + id + "was not found"));
     }
+
+    @Override
+    @Transactional
+    public void deleteItem(Long id) {
+        itemRepository.deleteById(id);
+    }
+
+
+//    @Override
+//      public ItemsViewModel  findById(Long id) {
+//        ItemEntity itemEntity = this.itemRepository
+//                .findById(id)
+//                .orElse(null);
+//
+//        return this.modelMapper.map(itemEntity, ItemsViewModel.class);
+//    }
+//        ProductEntity productEntity = this.productRepository
+//                .findById(productId)
+//                .orElseThrow(() -> new NotFoundObjectException(productId, PRODUCT));
+//
+//        return this.modelMapper.map(productEntity, ProductViewDto.class);
+//    }
+
+
+//    public ItemsViewModel findById(Long id) {
+//        return itemRepository.findById(id)
+//                .map(itemEntity -> {
+//                    ItemsViewModel itemsViewModel = modelMapper.map(itemEntity, ItemsViewModel.class);
+//                    return itemsViewModel;
+//                }).orElse(null);
+//    }
+//
 
 
 }
@@ -116,10 +149,6 @@ public class ItemServiceImpl implements ItemService {
 //        itemEntity.getCategory().getCategoryNameEnum().name()));
 //        return itemViewModel;
 //        }).orElse(null);
-
-
-
-
 
 
 //       routeViewModel.setPicture(routeEntity.getPictures().stream().findFirst().get().getUrl());

@@ -29,14 +29,10 @@ body {
 }
 
 
-
-
-
 .wrapper {
      display: grid;
      grid-gap: 20px;
 }
-
 
 
 /* About */

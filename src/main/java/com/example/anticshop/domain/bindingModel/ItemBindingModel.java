@@ -4,6 +4,7 @@ import com.example.anticshop.domain.entity.CategoryEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
@@ -14,9 +15,11 @@ public class ItemBindingModel {
     private String name;
     @Size(min = 5)
     private String description;
+    @Positive
     private BigDecimal price;
-   // @Size(min = 5, max= 512)
     private String imageUrl;
+    @Positive
+    private Integer year;
     @NotNull
     private CategoryNameEnum category;
 
@@ -56,6 +59,15 @@ public class ItemBindingModel {
 
     public ItemBindingModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public ItemBindingModel setYear(Integer year) {
+        this.year = year;
         return this;
     }
 

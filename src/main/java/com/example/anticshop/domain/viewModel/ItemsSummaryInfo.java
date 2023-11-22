@@ -1,4 +1,4 @@
-package com.example.anticshop.domain.serviceModel;
+package com.example.anticshop.domain.viewModel;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,6 +11,7 @@ public class ItemsSummaryInfo {
     private BigDecimal price;
     private LocalDate published_on;
     private String imageUrl;
+    private Integer year;
 
     public ItemsSummaryInfo() {
     }
@@ -66,6 +67,15 @@ public class ItemsSummaryInfo {
 
     public ItemsSummaryInfo setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public ItemsSummaryInfo setYear(Integer year) {
+        this.year = year;
         return this;
     }
 }
