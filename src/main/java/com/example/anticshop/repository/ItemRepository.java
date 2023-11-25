@@ -11,4 +11,6 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
 
 List<ItemEntity>findByCategory_Name(CategoryNameEnum category_name);
+
+
 }

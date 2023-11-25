@@ -104,6 +104,21 @@ public class ItemServiceImpl implements ItemService {
                 .orElseThrow(() -> new ObjectNotFoundException("Item with id" + id + "was not found"));
     }
 
+
+    @Override
+    public void editItem(Long id, ItemsViewModel itemsViewModel) {
+
+        ItemEntity editedItem = itemRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Item not found"));
+
+        editedItem.setDescription(itemsViewModel.getDescription());
+        editedItem.setPrice(itemsViewModel.getPrice());
+
+        itemRepository.saveAndFlush(editedItem);
+
+    }
+
+
     @Override
     @Transactional
     public void deleteItem(Long id) {
@@ -111,33 +126,81 @@ public class ItemServiceImpl implements ItemService {
     }
 
 
-//    @Override
-//      public ItemsViewModel  findById(Long id) {
-//        ItemEntity itemEntity = this.itemRepository
-//                .findById(id)
-//                .orElse(null);
-//
-//        return this.modelMapper.map(itemEntity, ItemsViewModel.class);
-//    }
-//        ProductEntity productEntity = this.productRepository
-//                .findById(productId)
-//                .orElseThrow(() -> new NotFoundObjectException(productId, PRODUCT));
-//
-//        return this.modelMapper.map(productEntity, ProductViewDto.class);
-//    }
-
-
-//    public ItemsViewModel findById(Long id) {
-//        return itemRepository.findById(id)
-//                .map(itemEntity -> {
-//                    ItemsViewModel itemsViewModel = modelMapper.map(itemEntity, ItemsViewModel.class);
-//                    return itemsViewModel;
-//                }).orElse(null);
-//    }
-//
-
-
 }
+
+
+
+//    @Override
+//    public void editItem(Long id, EditItemViewModel editItemViewModel) {
+//        ItemEntity editedItem = itemRepository.findById(id)
+//                .orElseThrow(() -> new ObjectNotFoundException("Item not found"));
+//
+//        editedItem.setDescription(editItemViewModel.getDescription());
+//        editedItem.setPrice(editItemViewModel.getPrice());
+//
+//        itemRepository.saveAndFlush(editedItem);
+//
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public ProductWithInfoView getProductInfoById(Long id) {
+//        Product product = this.productRepository.findById(id)
+//                .orElseThrow(() -> new Error("Product not found!"));
+//        return this.modelMapper.map(product, ProductWithInfoView.class);
+//    }
+//
+//
+
+
+
+
+
+
+
+
+
+
+//
+//    public void editProduct(Long productId,
+//                            EditProductBindingDto editedProductDto) {
+//
+//        ProductEntity productEntityById = this.productRepository
+//                .findProductEntityById(productId);
+//
+//        productEntityById
+//                .setDescription(editedProductDto.getDescription())
+//                .setPrice(editedProductDto.getPrice());
+//
+//        this.productRepository.saveAndFlush(productEntityById);
+
+
+
+
+
+
+
+
+
+
 
 
 //return itemRepository.findById(id)

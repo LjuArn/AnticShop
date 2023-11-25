@@ -21,4 +21,7 @@ public interface ItemService {
     ItemsViewModel findByIdItem(Long id);
 
     void deleteItem(Long id);
+
+
+    void editItem(Long id, ItemsViewModel itemsViewModel);
 }

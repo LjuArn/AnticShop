@@ -27,10 +27,10 @@ public class SecurityConfiguration {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/users/register", "/users/login", "/users/login-error").permitAll()
                         .requestMatchers("/about", "/error").permitAll()
-                        .requestMatchers("/favicon.ico", "/resources/**", "/error").permitAll()
+                        .requestMatchers("/favicon.ico", "/resources/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/offers/**").permitAll()
                         .requestMatchers("/users/profile").authenticated()
-                        .requestMatchers("/brands").hasRole(UserRoleEnum.ADMIN.name())
+                        .requestMatchers("/brands", "/items/edit/{id}").hasRole(UserRoleEnum.ADMIN.name())
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> {
                     formLogin.loginPage("/users/login")
