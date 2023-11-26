@@ -5,30 +5,36 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
 public class OrderEntity extends BaseEntity {
 
+    @OneToOne
+    private CartEntity cart;
+
     @Column(nullable = false)
     private LocalDate dateOrdered;
-
-    @Column
-    private BigDecimal orderSum;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private List<ChosenItemEntity> chosenItems = new ArrayList<>();
-
     @Enumerated(EnumType.STRING)
     private OrderConditionEnum orderCondition;
 
     public OrderEntity() {
+    }
+
+
+    public CartEntity getCart() {
+        return cart;
+    }
+
+    public OrderEntity setCart(CartEntity cart) {
+        this.cart = cart;
+        return this;
     }
 
     public LocalDate getDateOrdered() {
@@ -40,30 +46,12 @@ public class OrderEntity extends BaseEntity {
         return this;
     }
 
-    public BigDecimal getOrderSum() {
-        return orderSum;
-    }
-
-    public OrderEntity setOrderSum(BigDecimal orderSum) {
-        this.orderSum = orderSum;
-        return this;
-    }
-
     public UserEntity getUser() {
         return user;
     }
 
     public OrderEntity setUser(UserEntity user) {
         this.user = user;
-        return this;
-    }
-
-    public List<ChosenItemEntity> getChosenItems() {
-        return chosenItems;
-    }
-
-    public OrderEntity setChosenItems(List<ChosenItemEntity> chosenItems) {
-        this.chosenItems = chosenItems;
         return this;
     }
 
@@ -77,7 +65,8 @@ public class OrderEntity extends BaseEntity {
     }
 }
 
-
+//    @Column
+//    private BigDecimal orderSum;
 
 //    @OneToOne
 //    private Comment comment;

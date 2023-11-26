@@ -4,6 +4,8 @@ package com.example.anticshop.domain.entity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 public class CategoryEntity extends BaseEntity{
@@ -14,6 +16,9 @@ public class CategoryEntity extends BaseEntity{
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    private List<ItemEntity> items;
 
     public CategoryEntity() {
     }
@@ -33,6 +38,15 @@ public class CategoryEntity extends BaseEntity{
 
     public CategoryEntity setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public List<ItemEntity> getItems() {
+        return items;
+    }
+
+    public CategoryEntity setItems(List<ItemEntity> items) {
+        this.items = items;
         return this;
     }
 }

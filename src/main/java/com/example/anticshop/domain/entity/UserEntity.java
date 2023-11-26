@@ -25,15 +25,17 @@ public class UserEntity extends BaseEntity {
     @Column(unique = true)
     private String email;
 
+    @Column(columnDefinition = "TEXT")
+    private String imageUrl;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRoleEntity> roles = new ArrayList<>();
 
-    @Column(columnDefinition = "TEXT")
-    private String imageUrl;
-
     @OneToMany(mappedBy = "user", fetch =FetchType.EAGER)
     private Set<OrderEntity> orders;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<ItemEntity> items;
 
     public UserEntity() {
     }
@@ -55,7 +57,6 @@ public class UserEntity extends BaseEntity {
         this.password = password;
         return this;
     }
-
 
     public String getFullName() {
         return fullName;
@@ -84,21 +85,21 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    public List<UserRoleEntity> getRoles() {
-        return roles;
-    }
-
-    public UserEntity setRoles(List<UserRoleEntity> roles) {
-        this.roles = roles;
-        return this;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
 
     public UserEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public UserEntity setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
         return this;
     }
 
@@ -110,8 +111,17 @@ public class UserEntity extends BaseEntity {
         this.orders = orders;
         return this;
     }
-    //
+
+    public Set<ItemEntity> getItems() {
+        return items;
+    }
+
+    public UserEntity setItems(Set<ItemEntity> items) {
+        this.items = items;
+        return this;
+    }
+}
+
+
 //    @OneToMany
 //    private List<Comment> comments;
-
-}

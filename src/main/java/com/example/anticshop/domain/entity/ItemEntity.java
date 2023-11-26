@@ -10,7 +10,6 @@ import java.time.LocalDate;
 @Table(name = "items")
 public class ItemEntity extends BaseEntity {
 
-
     @Column(unique = true, nullable = false)
     private String name;
     @Column(columnDefinition = "TEXT")
@@ -32,6 +31,9 @@ public class ItemEntity extends BaseEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private CartEntity cart;
 
     public ItemEntity() {
     }
@@ -105,6 +107,15 @@ public class ItemEntity extends BaseEntity {
 
     public ItemEntity setUser(UserEntity user) {
         this.user = user;
+        return this;
+    }
+
+    public CartEntity getCart() {
+        return cart;
+    }
+
+    public ItemEntity setCart(CartEntity cart) {
+        this.cart = cart;
         return this;
     }
 }

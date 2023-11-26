@@ -5,13 +5,17 @@ import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.UserRoleEntity;
 import com.example.anticshop.domain.entity.enums.UserRoleEnum;
 import com.example.anticshop.domain.serviceModel.UserServiceModel;
+import com.example.anticshop.domain.viewModel.ItemsViewModel;
 import com.example.anticshop.repository.UserRepository;
+import com.example.anticshop.service.exeption.ObjectNotFoundException;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,5 +48,13 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
 
     }
+
+//    @Override
+//    public UserEntity getUserByUsername(String username) {
+//        return userRepository.findByUsername(username)
+//                .orElseThrow(()-> new ObjectNotFoundException("User not found"));
+//    }
+
+
 }
 

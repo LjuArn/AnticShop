@@ -41,20 +41,20 @@
 
 
 
-<!--                <div>-->
-<!--                    <td sec:authorize="isAuthenticated() && !hasAnyAuthority('ROLE_ADMIN')"-->
-<!--                        style="margin-bottom:10px">-->
+                <div>
+                    <td sec:authorize="isAuthenticated() && !hasAnyAuthority('ROLE_ADMIN')"
+                        style="margin-bottom:10px">
 
-<!--                        <form th:method="PATCH"-->
-<!--                              th:action="@{/cart/add/{id}(id=${product.id})}"-->
-<!--                              th:object="${product}">-->
-<!--                            <button class="order-button text-center text-decoration-none" type="submit"-->
-<!--                            >Add to cart-->
-<!--                            </button>-->
-<!--                        </form>-->
+                        <form th:method="PATCH"
+                              th:object="${item}"
+                              th:action="@{/cart/add/{id}(id=${id})}">
+                            <button class="order-button text-center text-decoration-none" type="submit"
+                            >Add to cart
+                            </button>
+                        </form>
 
-<!--                    </td>-->
-<!--                </div>-->
+                    </td>
+                </div>
 
                 <div>
                     <td sec:authorize="hasAuthority('ROLE_ADMIN')" style="margin-bottom:10px">

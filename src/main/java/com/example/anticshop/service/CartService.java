@@ -1,4 +1,4 @@
 package com.example.anticshop.service;
 
-public interface ChosenItemService {
+public interface CartService {
 }

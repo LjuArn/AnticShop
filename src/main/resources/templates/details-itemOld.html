@@ -41,7 +41,8 @@
 
                 <div class="card-body" sec:authorize="hasAuthority('ROLE_ADMIN')">
 
-                    <a th:href="@{/items/edit/{id}(id=*{id})}"  title="Edit" data-toggle="tooltip">Edit now if you want</a>
+                    <a th:href="@{/items/edit/{id}(id=*{id})}"
+                       title="Edit" data-toggle="tooltip">Edit now if you want</a>
                 </div>
 
                 <script>

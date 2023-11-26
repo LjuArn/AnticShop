@@ -1,6 +1,7 @@
 package com.example.anticshop.service;
 
 import com.example.anticshop.domain.entity.ItemEntity;
+import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import com.example.anticshop.domain.serviceModel.ItemAddServiceModel;
 import com.example.anticshop.domain.viewModel.ItemsSummaryInfo;
@@ -22,12 +23,16 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final ModelMapper modelMapper;
     private final CategoryService categoryService;
+    private final UserService userService;
 
     public ItemServiceImpl(ItemRepository itemRepository,
-                           ModelMapper modelMapper, CategoryService categoryService) {
+                           ModelMapper modelMapper,
+                           CategoryService categoryService,
+                           UserService userService) {
         this.itemRepository = itemRepository;
         this.modelMapper = modelMapper;
         this.categoryService = categoryService;
+        this.userService = userService;
     }
 
     @Override
@@ -126,21 +131,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
 
+
 }
 
 
-
-//    @Override
-//    public void editItem(Long id, EditItemViewModel editItemViewModel) {
-//        ItemEntity editedItem = itemRepository.findById(id)
-//                .orElseThrow(() -> new ObjectNotFoundException("Item not found"));
-//
-//        editedItem.setDescription(editItemViewModel.getDescription());
-//        editedItem.setPrice(editItemViewModel.getPrice());
-//
-//        itemRepository.saveAndFlush(editedItem);
-//
-//    }
 
 
 
