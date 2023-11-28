@@ -37,7 +37,18 @@ public class CartController {
 
         cartService.addItemToTheCart(id, principal.getName());
 
-        return "cart";
+        return "redirect:/items/all";
+    }
+
+
+
+    @PatchMapping("/remove/{id}")
+    public String removeItemFromTheCart(@PathVariable("id") Long id,
+                                           Principal principal) {
+
+        this.cartService.removeItemFromTheCart(id, principal.getName());
+
+        return "redirect:/cart";
     }
 
 }

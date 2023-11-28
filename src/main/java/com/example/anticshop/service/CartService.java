@@ -11,4 +11,6 @@ public interface CartService {
     List<ItemsViewModel> getItemsInTheCart(String username);
 
     BigDecimal getItemsPrice(String username);
+
+    void removeItemFromTheCart(Long id, String username);
 }

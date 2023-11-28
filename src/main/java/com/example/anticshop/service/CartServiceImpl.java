@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class CartServiceImpl implements CartService {
 
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
-   private final CartRepository cartRepository;
+    private final CartRepository cartRepository;
     private final ModelMapper modelMapper;
 
 
@@ -37,11 +38,8 @@ public class CartServiceImpl implements CartService {
 
 
     public CartEntity getNewCart() {
-
         CartEntity shoppingCart = new CartEntity();
-
         cartRepository.saveAndFlush(shoppingCart);
-
         return shoppingCart;
     }
 
@@ -54,11 +52,12 @@ public class CartServiceImpl implements CartService {
                 .orElseThrow(() -> new ObjectNotFoundException("User with id" + id + "not found"));
         ItemEntity item = itemRepository.findItemEntityById(id);
 
-        if(user.getCart() == null){
+        if (user.getCart() == null) {
             user.setCart(getNewCart());
         }
         user.getCart().addItem(item);
         item.setCart(user.getCart());
+        item.setUser(user);
         user.getCart().increaseItemsSum(item.getPrice());
 
     }
@@ -89,5 +88,26 @@ public class CartServiceImpl implements CartService {
 
     }
 
+    @Override
+    public void removeItemFromTheCart(Long id, String username) {
+
+        UserEntity user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ObjectNotFoundException("User with id" + id + "not found"));
+        ItemEntity item = itemRepository.findItemEntityById(id);
+
+        CartEntity cart = user.getCart();
+        cart.getChosenItems().remove(item);
+        cart.decreaseItemsSum(item.getPrice());
+
+        item.setUser(userRepository.findByUsername("ADMIN")
+                .orElseThrow(() -> new ObjectNotFoundException("User with username" + username + "not found")));
+        item.setCart(null);
+
+        itemRepository.saveAndFlush(item);
+        cartRepository.saveAndFlush(cart);
+
+    }
 
 }
+
+

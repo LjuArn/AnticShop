@@ -27,7 +27,7 @@
             <table class="table table-cart text-center text-warning" style="height: 68.5vh;
                 overflow: auto; width:70%; margin-left: auto; margin-right: auto;
                 border-top-left-radius:25px; border-top-right-radius: 25px;
-                 border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-color: #ffe800">
+                 border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-color: #34ce57">
 
                 <tr th:each="item : ${cartItems}"
                     th:object="${item}">
@@ -38,23 +38,23 @@
 
                     <td th:text="*{price}" class="price text-center">price</td>
 
-<!--                    <td>-->
+                    <td>
 
-<!--                        <form th:method="PATCH"-->
-<!--                              th:action="@{/cart/remove/{id}(id = *{id})}"-->
-<!--                              th:object="${food}">-->
-<!--                            <button class="remove-button" type="submit"-->
-<!--                                    style="border-color: white"-->
-<!--                            >Remove-->
-<!--                            </button>-->
-<!--                        </form>-->
+                        <form th:method="PATCH"
+                              th:action="@{/cart/remove/{id}(id = *{id})}"
+                              th:object="${item}">
+                            <button class="remove-button" type="submit"
+                                    style="border-color: white"
+                            >Remove
+                            </button>
+                        </form>
 
-<!--                    </td>-->
+                    </td>
                 </tr>
 
                 <tr>
                     <td></td>
-                    <td style="text-align: end; color:white; font-weight: bold;">
+                    <td style="text-align: end; color:orange; font-weight: bold;">
                         Total:
                     </td>
                     <td style=" text-align: center; color: white; font-weight: bold;" th:text="${itemsPrice}">
@@ -67,14 +67,6 @@
         </div>
 
 
-<!--        <div class="mt-2" style="margin-right: 0; margin-left: 950px;">-->
-<!--            <a class="finalize-order justify-content-center" th:if="${countItems!=0}"-->
-<!--               th:href="@{/orders/finalize}">Finalize order</a>-->
-<!--        </div> -->
-<!--        -->
-<!--        -->
-<!--        -->
-<!--        -->
 <!--        <div class="mt-2" style="margin-right: 0; margin-left: 950px;">-->
 <!--            <a class="finalize-order justify-content-center" th:if="${cartProducts.size()!=0}"-->
 <!--               th:href="@{/orders/finalize}">Finalize order</a>-->

@@ -1,12 +1,12 @@
 package com.example.anticshop.service;
 
 import com.example.anticshop.domain.entity.ItemEntity;
-import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import com.example.anticshop.domain.serviceModel.ItemAddServiceModel;
 import com.example.anticshop.domain.viewModel.ItemsSummaryInfo;
 import com.example.anticshop.domain.viewModel.ItemsViewModel;
 import com.example.anticshop.repository.ItemRepository;
+import com.example.anticshop.repository.UserRepository;
 import com.example.anticshop.service.exeption.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
@@ -21,15 +21,18 @@ import static java.time.LocalDate.now;
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
+    private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final CategoryService categoryService;
     private final UserService userService;
 
     public ItemServiceImpl(ItemRepository itemRepository,
+                           UserRepository userRepository,
                            ModelMapper modelMapper,
                            CategoryService categoryService,
                            UserService userService) {
         this.itemRepository = itemRepository;
+        this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.categoryService = categoryService;
         this.userService = userService;
@@ -39,7 +42,7 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemsSummaryInfo> getAllOrders() {
         return
                 itemRepository
-                        .findByCategory_Name(CategoryNameEnum.ORDERS)
+                        .findAllByUser_IdAndCategory_Name(1L,CategoryNameEnum.ORDERS)
                         .stream()
                         .map(itemEntity -> {
                             ItemsSummaryInfo orderSummeryInfo = modelMapper.map(itemEntity, ItemsSummaryInfo.class);
@@ -51,7 +54,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<ItemsSummaryInfo> getAllMedals() {
         return itemRepository
-                .findByCategory_Name(CategoryNameEnum.MEDALS)
+                .findAllByUser_IdAndCategory_Name(1L,CategoryNameEnum.MEDALS)
                 .stream()
                 .map(itemEntity -> {
                     ItemsSummaryInfo medalSummeryInfo = modelMapper.map(itemEntity, ItemsSummaryInfo.class);
@@ -64,7 +67,7 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemsSummaryInfo> getAllCoins() {
         return
                 itemRepository
-                        .findByCategory_Name(CategoryNameEnum.COINS)
+                        .findAllByUser_IdAndCategory_Name(1L,CategoryNameEnum.COINS)
                         .stream()
                         .map(itemEntity -> {
                             ItemsSummaryInfo coinsSummeryInfo = modelMapper.map(itemEntity, ItemsSummaryInfo.class);
@@ -78,13 +81,15 @@ public class ItemServiceImpl implements ItemService {
         ItemEntity item = modelMapper.map(itemAddServiceModel, ItemEntity.class);
         item.setPublished_on(now());
         item.setCategory(categoryService.findByCategoryNameEnum(itemAddServiceModel.getCategory()));
+        item.setUser(userRepository.findByUsername("ADMIN")
+                .orElseThrow(() -> new ObjectNotFoundException("User with username ADMIN not found")));
         itemRepository.saveAndFlush(item);
     }
 
     @Override
     public List<ItemsViewModel> findAllItemsViewModel() {
         return itemRepository
-                .findAll()
+                .findAllByUser_Id(1L)
                 .stream()
                 .map(itemEntity -> {
                     ItemsViewModel itemsViewModel =
