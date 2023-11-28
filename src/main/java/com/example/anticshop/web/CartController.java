@@ -1,30 +1,43 @@
 package com.example.anticshop.web;
 
+import com.example.anticshop.service.CartService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/cart")
 public class CartController {
 
-//    @GetMapping
-//    public String getCart(Model model,
-//                          Principal principal) {
-//
-//        model.addAttribute(CART_PRODUCTS, this.orderService.getProductsInTheCart(principal.getName()));
-//        model.addAttribute(PRODUCTS_PRICE, this.orderService.getProductsPrice(principal.getName()));
-//        model.addAttribute(COUNT_PRODUCTS, this.orderService.getProductsInTheCart(principal.getName()).size());
-//
-//        return "order-cart";
-//    }
-//
-//    @PatchMapping("/add/{id}")
-//    public String addProductToTheCart(@PathVariable("id") Long id,
-//                                      Principal principal) {
-//
-//        cartService.addProductToTheCart(id, principal.getName());
-//
-//        return "redirect:/menu/" + this.productService.getCategoryName(id);
-//    }
+
+    private final CartService cartService;
+
+    public CartController(CartService cartService) {
+        this.cartService = cartService;
+    }
+
+    @GetMapping
+    public String getCart(Model model, Principal principal) {
+
+       model.addAttribute("cartItems", cartService.getItemsInTheCart(principal.getName()));
+       model.addAttribute("itemsPrice", cartService.getItemsPrice(principal.getName()));
+       model.addAttribute("countItems", cartService.getItemsInTheCart(principal.getName()).size());
+
+        return "cart";
+    }
+
+    @PatchMapping("/add/{id}")
+    public String addProductToTheCart(@PathVariable("id") Long id,
+                                      Principal principal) {
+
+        cartService.addItemToTheCart(id, principal.getName());
+
+        return "cart";
+    }
 
 }

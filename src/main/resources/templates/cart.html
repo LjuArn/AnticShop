@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head th:replace="~{fragments/commons::head}">
+</head>
+<body>
+<header th:replace="~{fragments/commons::nav}">
+</header>
+
+
+<div >
+<!--    class="row" style="font-family: Georgia, serif;"-->
+
+    <div class="container-fluid">
+
+<!--    <div class="container-cart rounded">-->
+
+        <h2 class="text-center  mt-5" style="font-family: Georgia, serif; color: #34ce57">Cart</h2>
+<!--        <h3 class="text-center mb-3" style="color: #2c504a">Cart</h3>-->
+
+
+
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+            <table class="table table-cart text-center text-warning" style="height: 68.5vh;
+                overflow: auto; width:70%; margin-left: auto; margin-right: auto;
+                border-top-left-radius:25px; border-top-right-radius: 25px;
+                 border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-color: #ffe800">
+
+                <tr th:each="item : ${cartItems}"
+                    th:object="${item}">
+
+                    <td class="product-name" th:text="*{name}">Name</td>
+
+                    <td class="description" th:text="*{description}">description</td>
+
+                    <td th:text="*{price}" class="price text-center">price</td>
+
+<!--                    <td>-->
+
+<!--                        <form th:method="PATCH"-->
+<!--                              th:action="@{/cart/remove/{id}(id = *{id})}"-->
+<!--                              th:object="${food}">-->
+<!--                            <button class="remove-button" type="submit"-->
+<!--                                    style="border-color: white"-->
+<!--                            >Remove-->
+<!--                            </button>-->
+<!--                        </form>-->
+
+<!--                    </td>-->
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td style="text-align: end; color:white; font-weight: bold;">
+                        Total:
+                    </td>
+                    <td style=" text-align: center; color: white; font-weight: bold;" th:text="${itemsPrice}">
+                    </td>
+                    <td></td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+<!--        <div class="mt-2" style="margin-right: 0; margin-left: 950px;">-->
+<!--            <a class="finalize-order justify-content-center" th:if="${countItems!=0}"-->
+<!--               th:href="@{/orders/finalize}">Finalize order</a>-->
+<!--        </div> -->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--        <div class="mt-2" style="margin-right: 0; margin-left: 950px;">-->
+<!--            <a class="finalize-order justify-content-center" th:if="${cartProducts.size()!=0}"-->
+<!--               th:href="@{/orders/finalize}">Finalize order</a>-->
+<!--        </div>-->
+
+    </div>
+</div>
+
+
+<footer th:replace="~{fragments/commons::footer}">
+</footer>
+</body>
+</html>

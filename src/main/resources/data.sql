@@ -41,7 +41,7 @@ VALUES ('Орден „За Гражданска Заслуга“ I ст. 1908-
         'https://upload.wikimedia.org/wikipedia/commons/c/c7/%D0%9E%D1%80%D0%B4%D0%B5%D0%BD_%C2%AB%D0%97%D0%B0_%D1%85%D1%80%D0%B0%D0%B1%D1%80%D0%BE%D1%81%D1%82%C2%BB_I_%D1%81%D1%82%D0%B5%D0%BF%D0%B5%D0%BD_%D1%81_%D0%BC%D0%B5%D1%87%D0%BE%D0%B2%D0%B5.gif', 1912, 2, 1),
        ('Медал "Войнишки кръст За храброст IV степен" ', 'Bulgarian royal medals', 40.00, CURRENT_TIMESTAMP,
         'https://www.nmogabrovo.com/uploads/acho/thumbs/details/1276ni2.jpg', 1910, 2, 1),
-       ('Монета', 'Bulgarian монета сребро', 100.00, CURRENT_TIMESTAMP,
-        'https://images.drive.com.au/driveau/image/upload/t_wp-default/v1/cms/uploads/ipbwdw9jxtiewinmhsdr', 1900, 3, 1);;
+       ('Монета', 'България 5 лева, 1884', 100.00, CURRENT_TIMESTAMP,
+        'https://i.ucoin.net/coin/48/262/48262984-1/bulgaria-5-leva-1884.jpg', 1884, 3, 1);;
 
 

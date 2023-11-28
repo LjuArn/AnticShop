@@ -37,6 +37,9 @@ public class UserEntity extends BaseEntity {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<ItemEntity> items;
 
+    @OneToOne
+    private CartEntity cart;
+
     public UserEntity() {
     }
 
@@ -118,6 +121,16 @@ public class UserEntity extends BaseEntity {
 
     public UserEntity setItems(Set<ItemEntity> items) {
         this.items = items;
+        return this;
+    }
+
+
+    public CartEntity getCart() {
+        return cart;
+    }
+
+    public UserEntity setCart(CartEntity cart) {
+        this.cart = cart;
         return this;
     }
 }

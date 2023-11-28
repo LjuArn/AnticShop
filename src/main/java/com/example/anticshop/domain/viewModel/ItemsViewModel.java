@@ -1,9 +1,12 @@
 package com.example.anticshop.domain.viewModel;
 
 
+import com.example.anticshop.domain.entity.CartEntity;
+import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class ItemsViewModel {
 
@@ -14,7 +17,6 @@ public class ItemsViewModel {
     private BigDecimal price;
     private Integer year;
     private CategoryNameEnum category;
-
 
     public ItemsViewModel() {
     }
