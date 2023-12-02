@@ -13,7 +13,9 @@ VALUES ('ADMIN', 'b21f1a72fa7e195abcaacb93b60004daf166c0707fb427afe4e4354852eabf
        ('niki', 'fe1bc8fbdb468d590bea86fc6257ec238499745738f2a3affb6478f0e3050d53ebcdcc8c0cac8c7cc445975bc87a9bb7',
         'Nikolai Nik', 'nik@test.bg', true),
        ('zaza', '79b9a214662b7d7bd2f3f5fb527478a8c0c871341131e37da3521f7c1303ac9a325573ae247cff045e3a113ff043e44e',
-        'Zara Zara', 'zaz@test.bg', true);
+        'Zara Zara', 'zaz@test.bg', true),
+       ('zaza11', '79b9a214662b7d7bd2f3f5fb527478a8c0c871341131e37da3521f7c1303ac9a325573ae247cff045e3a113ff043e44e',
+        'Zara Zara11', 'zaz11@test.bg', false);
 
 
 
