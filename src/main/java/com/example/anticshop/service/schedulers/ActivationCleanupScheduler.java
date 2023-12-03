@@ -7,18 +7,18 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class ActivationLinkCleanupScheduler {
+public class ActivationCleanupScheduler {
 
     private final UserActivationService userActivationService;
 
-    public ActivationLinkCleanupScheduler(UserActivationService userActivationService) {
+    public ActivationCleanupScheduler(UserActivationService userActivationService) {
         this.userActivationService = userActivationService;
     }
 
     @Scheduled(cron = "0 30 23 L * ?")
     public void cleanUp() {
-        System.out.println("Trigger cleanup of activation links. " + LocalDateTime.now());
-        userActivationService.cleanUpObsoleteActivationLinks();
+        System.out.println("Trigger cleanup." + LocalDateTime.now());
+        userActivationService.cleanUpActivation();
     }
 
 }
