@@ -25,7 +25,7 @@ public class AnticUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
                 .map(this::userDetails)
-                .orElseThrow(() -> new UsernameNotFoundException("User with username" + username + "not found!!"));
+                .orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found!!"));
     }
 
 
