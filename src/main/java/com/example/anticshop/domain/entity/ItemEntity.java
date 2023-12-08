@@ -12,13 +12,13 @@ public class ItemEntity extends BaseEntity {
 
     @Column(unique = true, nullable = false)
     private String name;
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 4000)
     private String description;
     @Column(nullable = false)
     private BigDecimal price;
     @Column
     private LocalDate published_on;
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 4000)
     private String imageUrl;
     @Column
     private Integer year;

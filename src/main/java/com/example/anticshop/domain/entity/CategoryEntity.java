@@ -14,7 +14,7 @@ public class CategoryEntity extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private CategoryNameEnum name;
 
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(name = "description", length = 4000)
     private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)

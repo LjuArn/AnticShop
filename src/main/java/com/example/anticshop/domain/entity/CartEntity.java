@@ -11,7 +11,7 @@ import java.util.List;
 public class CartEntity extends BaseEntity {
 
 
-    @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
     private List<ItemEntity> chosenItems;
 
     private Long countItems;

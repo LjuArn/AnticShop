@@ -25,7 +25,7 @@ public class UserEntity extends BaseEntity {
     @Column(unique = true)
     private String email;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 4000)
     private String imageUrl;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
