@@ -28,7 +28,7 @@ public class UserEntity extends BaseEntity {
     @Column(length = 4000)
     private String imageUrl;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany( fetch = FetchType.EAGER)
     private List<UserRoleEntity> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", fetch =FetchType.EAGER)

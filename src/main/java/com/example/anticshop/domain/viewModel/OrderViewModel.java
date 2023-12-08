@@ -1,55 +1,48 @@
-package com.example.anticshop.domain.entity;
+package com.example.anticshop.domain.viewModel;
 
+import com.example.anticshop.domain.entity.CartEntity;
+import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.OrderConditionEnum;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
-@Entity
-@Table(name = "orders")
-public class OrderEntity extends BaseEntity {
+public class OrderViewModel {
 
-    @OneToOne
+    private Long id;
     private CartEntity cart;
-
-    @Column(nullable = false)
-    private LocalDateTime dateOrdered;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    private LocalDate dateOrdered;
     private UserEntity user;
-
-    @Enumerated(EnumType.STRING)
     private OrderConditionEnum orderCondition;
-
-
-    @Column(nullable = false)
     private String address;
-
-    @Column(nullable = false)
     private String gsm;
 
+    public OrderViewModel() {
+    }
 
-    public OrderEntity() {
+    public Long getId() {
+        return id;
+    }
+
+    public OrderViewModel setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public CartEntity getCart() {
         return cart;
     }
 
-    public OrderEntity setCart(CartEntity cart) {
+    public OrderViewModel setCart(CartEntity cart) {
         this.cart = cart;
         return this;
     }
 
-    public LocalDateTime getDateOrdered() {
+    public LocalDate getDateOrdered() {
         return dateOrdered;
     }
 
-    public OrderEntity setDateOrdered(LocalDateTime dateOrdered) {
+    public OrderViewModel setDateOrdered(LocalDate dateOrdered) {
         this.dateOrdered = dateOrdered;
         return this;
     }
@@ -58,7 +51,7 @@ public class OrderEntity extends BaseEntity {
         return user;
     }
 
-    public OrderEntity setUser(UserEntity user) {
+    public OrderViewModel setUser(UserEntity user) {
         this.user = user;
         return this;
     }
@@ -67,7 +60,7 @@ public class OrderEntity extends BaseEntity {
         return orderCondition;
     }
 
-    public OrderEntity setOrderCondition(OrderConditionEnum orderCondition) {
+    public OrderViewModel setOrderCondition(OrderConditionEnum orderCondition) {
         this.orderCondition = orderCondition;
         return this;
     }
@@ -76,7 +69,7 @@ public class OrderEntity extends BaseEntity {
         return address;
     }
 
-    public OrderEntity setAddress(String address) {
+    public OrderViewModel setAddress(String address) {
         this.address = address;
         return this;
     }
@@ -85,14 +78,8 @@ public class OrderEntity extends BaseEntity {
         return gsm;
     }
 
-    public OrderEntity setGsm(String gsm) {
+    public OrderViewModel setGsm(String gsm) {
         this.gsm = gsm;
         return this;
     }
 }
-
-//    @Column
-//    private BigDecimal orderSum;
-
-//    @OneToOne
-//    private Comment comment;

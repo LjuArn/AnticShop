@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head th:replace="~{fragments/commons::head}">
+</head>
+<body>
+<header th:replace="~{fragments/commons::nav}">
+</header>
+
+
+<div class="container" style="background-color: #49857b; border-radius: 25px; font-family: Georgia, serif;">
+    <h3 class="text-center" style="color: white; margin-top: 10px;">My orders</h3>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered mt-4">
+
+                <thead>
+
+                <tr style="background-color: #3a6661; color: white">
+                    <th scope="col" class="text-center">Id</th>
+                    <th scope="col" class="text-center">Count of items</th>
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Created on</th>
+                    <th scope="col" class="text-center">Status</th>
+<!--                    <th scope="col" class="text-center">More details</th>-->
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each="order: ${orders}"
+                    th:object="${order}">
+
+                    <th scope="row" th:text="*{id}" class="text-center" style="background-color: #93b5b1; color: white">
+                        1
+                    </th>
+
+                    <td th:text="${countItems}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+
+                    <td th:text="${itemsPrice}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+
+                    <td th:text="*{dateOrdered}" class="text-center"
+                        style="background-color: #f4f1ed">01-01-2010
+                    </td>
+
+                    <td th:text="*{orderCondition}" class="text-center" style="background-color: #f4f1ed">Delivered</td>
+
+<!--                    <td style="text-align: center; background-color: #f4f1ed">-->
+<!--                        <a type="button" class="button-detail" style=" background-color: #93b5b1"-->
+<!--                           th:href="@{/orders/details/{id}(id=${order.id})}">Details</a>-->
+<!--                    </td>-->
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+<!--                            th:text="*{#temporals.format(dateOrdered,'dd-MM-yyyy')}" class="text-center"-->
