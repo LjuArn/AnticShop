@@ -7,9 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
@@ -73,17 +71,25 @@ public class OrderController {
         return "user-orders-history";
     }
 
-//
-//    @GetMapping("/all/history")
-//    public String getAllOrdersHistory(Model model) {
-//
-//        model.addAttribute(ALL_ORDERS, this.orderService.getAllOrders());
-//
-//        return "orders-history";
-//    }
+
+    @GetMapping("/all/history")
+    public String getAllOrdersHistory(Model model, Principal principal) {
+
+        model.addAttribute("allOrders", orderService.getAllOrders());
+//        model.addAttribute("itemsPrice", orderService.);
 
 
+        return "all-orders-history";
+    }
 
+
+    @PatchMapping("/finish/{id}")
+    public String finishOrder(@PathVariable("id") Long orderId) {
+
+        orderService.finishOrder(orderId);
+
+        return "redirect:/orders/all/history";
+    }
 
 
 }

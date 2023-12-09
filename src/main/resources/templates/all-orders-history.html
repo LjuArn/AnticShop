@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head th:replace="~{fragments/commons::head}">
+</head>
+<body>
+<header th:replace="~{fragments/commons::nav}">
+</header>
+
+
+<div class="container" style="background-color: #49857b; font-family: Georgia, serif; border-radius: 25px;">
+    <h1 class="text-center text-white mb-3">All orders</h1>
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <table class="table table-bordered">
+
+                <thead>
+                <tr style="background-color: #3a6661; color: white">
+                    <th scope="col" class="text-center">Id</th>
+                    <th scope="col" class="text-center">Owner</th>
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Created on</th>
+                    <th scope="col" class="text-center">Delivered on</th>
+                    <th scope="col" class="text-center">address</th>
+                    <th scope="col" class="text-center">gsm</th>
+                    <th scope="col" class="text-center">Status</th>
+
+                    <th scope="col" class="text-center" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        Finish
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each="order: ${allOrders}"
+                    th:object="${order}">
+
+                    <th scope="row" th:text="*{id}" class="text-center" style="background-color: #93b5b1; color: white">1</th>
+
+                    <td th:text="*{user.getUsername()}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+
+                    <td th:text="*{sumItemsOrder}" class="text-center" style="background-color: #f4f1ed">itemsPrice</td>
+
+                    <td th:text="*{#temporals.format(dateOrdered,'dd-MM-yyyy HH:mm')}" class="text-center"
+                        style="background-color: #f4f1ed">01-01-2010
+                    </td>
+
+                    <td th:text="*{#temporals.format(deliveredOn,'dd-MM-yyyy HH:mm:ss')}" class="text-center"
+                        style="background-color: #f4f1ed">01-01-2010
+                    </td>
+
+                    <td th:text="*{address}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+
+                    <td th:text="*{gsm}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+
+                    <td th:text="*{orderCondition}" class="text-center" style="background-color: #f4f1ed">Ready</td>
+
+
+                    <td style="background-color: #f4f1ed; text-align: center"
+                        sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
+                        <form th:if="*{#strings.equals(getOrderCondition(),'READY_FOR_SENT')}"
+                              th:method="PATCH"
+                              th:action="@{/orders/finish/{id}(id=${order.id})}"
+                              th:object="${order}">
+                            <button class="button-detail" type="submit"
+                                    style="width:100%; border-color: white; background-color: #49857b;"
+                            >Finish order
+                            </button>
+                        </form>
+                    </td>
+
+
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<footer th:replace="~{fragments/commons::footer}">
+</footer>
+
+</body>
+</html>

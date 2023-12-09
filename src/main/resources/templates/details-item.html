@@ -56,13 +56,13 @@
                     </td>
                 </div>
 
-                <div>
-                    <td sec:authorize="hasAuthority('ROLE_ADMIN')" style="margin-bottom:10px">
-                        <a class="order-button text-center text-decoration-none"
-                           th:href="@{/items/edit/{id}(id=*{id})}"
-                        >Edit product</a>
-                    </td>
-                </div>
+<!--                <div>-->
+<!--                    <td sec:authorize="hasAuthority('ROLE_ADMIN')" style="margin-bottom:10px">-->
+<!--                        <a class="order-button text-center text-decoration-none"-->
+<!--                           th:href="@{/items/edit/{id}(id=*{id})}"-->
+<!--                        >Edit product</a>-->
+<!--                    </td>-->
+<!--                </div>-->
                 <!--                <div class="card-body">-->
                 <div class="card-body" sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <form th:method="delete"

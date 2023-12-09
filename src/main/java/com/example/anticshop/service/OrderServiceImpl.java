@@ -6,6 +6,7 @@ import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.OrderConditionEnum;
 import com.example.anticshop.domain.viewModel.OrderViewModel;
 import com.example.anticshop.repository.OrderRepository;
+import com.example.anticshop.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -37,20 +38,21 @@ public class OrderServiceImpl implements OrderService {
         UserEntity user = userService.getUserByUsername(userName);
         buildOrder(order, user, orderBindingModel);
 
+        order.setSumItemsOrder(user.getCart().getItemsSum());
         orderRepository.saveAndFlush(order);
 
-        user.getCart().setChosenItems(new ArrayList<>()).setItemsSum(BigDecimal.ZERO);
-        user.getCart().setCountItems(0L);
-
+//        user.getCart().setChosenItems(new ArrayList<>()).setItemsSum(BigDecimal.ZERO);
+//        user.getCart().setCountItems(0L);
 
     }
+
 
     private static void buildOrder(OrderEntity order, UserEntity user, OrderBindingModel orderBindingModel) {
         order
                 .setUser(user)
                 .setCart(user.getCart())
                 .setDateOrdered(LocalDateTime.now())
-                .setOrderCondition(OrderConditionEnum.READYFORSENT)
+                .setOrderCondition(OrderConditionEnum.READY_FOR_SENT)
                 .setAddress(orderBindingModel.getAddress())
                 .setGsm(orderBindingModel.getGsm());
     }
@@ -68,5 +70,27 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-}
+    @Override
+    public List<OrderViewModel> getAllOrders() {
+        return orderRepository
+                .findAll()
+                .stream()
+                .map(orderEntity -> modelMapper.map(orderEntity, OrderViewModel.class))
+                .collect(Collectors.toList());
+    }
 
+    @Override
+    public void finishOrder(Long orderId) {
+        OrderEntity orderEntity = this.orderRepository
+                .findById(orderId)
+                .orElseThrow(()-> new ObjectNotFoundException("Order with" + orderId + "not found"));
+
+
+        orderEntity.setOrderCondition(OrderConditionEnum.DELIVERED);
+        orderEntity.setDeliveredOn(LocalDateTime.now());
+
+        this.orderRepository.saveAndFlush(orderEntity);
+    }
+
+
+}

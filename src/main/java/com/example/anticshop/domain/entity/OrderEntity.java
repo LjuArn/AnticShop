@@ -32,6 +32,11 @@ public class OrderEntity extends BaseEntity {
     @Column(nullable = false)
     private String gsm;
 
+    @Column
+    private LocalDateTime deliveredOn;
+
+    @Column
+    private BigDecimal sumItemsOrder;
 
     public OrderEntity() {
     }
@@ -89,10 +94,24 @@ public class OrderEntity extends BaseEntity {
         this.gsm = gsm;
         return this;
     }
+
+
+    public LocalDateTime getDeliveredOn() {
+        return deliveredOn;
+    }
+
+    public OrderEntity setDeliveredOn(LocalDateTime deliveredOn) {
+        this.deliveredOn = deliveredOn;
+        return this;
+    }
+
+    public BigDecimal getSumItemsOrder() {
+        return sumItemsOrder;
+    }
+
+    public OrderEntity setSumItemsOrder(BigDecimal sumItemsOrder) {
+        this.sumItemsOrder = sumItemsOrder;
+        return this;
+    }
 }
 
-//    @Column
-//    private BigDecimal orderSum;
-
-//    @OneToOne
-//    private Comment comment;

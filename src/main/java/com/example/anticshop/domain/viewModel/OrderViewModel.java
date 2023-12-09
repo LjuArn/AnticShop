@@ -4,8 +4,7 @@ import com.example.anticshop.domain.entity.CartEntity;
 import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.OrderConditionEnum;
 
-
-
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class OrderViewModel {
@@ -17,6 +16,9 @@ public class OrderViewModel {
     private OrderConditionEnum orderCondition;
     private String address;
     private String gsm;
+    private LocalDateTime deliveredOn;
+    private BigDecimal sumItemsOrder;
+
 
     public OrderViewModel() {
     }
@@ -81,6 +83,24 @@ public class OrderViewModel {
 
     public OrderViewModel setGsm(String gsm) {
         this.gsm = gsm;
+        return this;
+    }
+
+    public LocalDateTime getDeliveredOn() {
+        return deliveredOn;
+    }
+
+    public OrderViewModel setDeliveredOn(LocalDateTime deliveredOn) {
+        this.deliveredOn = deliveredOn;
+        return this;
+    }
+
+    public BigDecimal getSumItemsOrder() {
+        return sumItemsOrder;
+    }
+
+    public OrderViewModel setSumItemsOrder(BigDecimal sumItemsOrder) {
+        this.sumItemsOrder = sumItemsOrder;
         return this;
     }
 }

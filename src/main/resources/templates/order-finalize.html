@@ -14,7 +14,6 @@
 </div>
 
 
-
 <div class="container-finalize"
      style="background-color: #49857b;
      font-family: Georgia, serif;
@@ -61,8 +60,6 @@ width: 100%">
                 </div>
 
 
-
-
                 <div class="text-end mt-4 mb-1">
                     <button type="submit" class="btn" style="width: 40%; border-radius: 40px; margin-bottom: 30px;">
                         Order
@@ -72,46 +69,12 @@ width: 100%">
             </form>
         </div>
 
-<!--        <div class="col-md-4">-->
-<!--            <div style="margin-top: 80px; background-color: white; color: #2c504a; font-weight: bold; width: 70%; border-radius: 25px; margin-left: 50px;">-->
-
-<!--                <div class="form-group row" style="margin-left: 10px;">-->
-<!--                    <label class="col col-form-label">Food: <span th:text="|${foodPrice} &euro;|"></span></label>-->
-<!--                </div>-->
-
-<!--                <div class="form-group row" style="margin-left: 10px">-->
-<!--                    <label class="col col-form-label">Delivery: 3.50 <span th:text="|&euro;|"></span></label>-->
-<!--                </div>-->
-
-<!--                <div class="form-group row" style="margin-left: 10px">-->
-<!--                    <label class="col col-form-label">Boxes: <span-->
-<!--                            th:text="|${#numbers.formatDecimal(countProducts*0.5, 1, 'COMMA', 2, 'POINT')} &euro;|"></span></label>-->
-<!--                </div>-->
-
-<!--                <div class="form-group row" style="margin-left: 10px; margin-bottom: 5px;">-->
-<!--                    <label class="col col-form-label">Total : <span-->
-<!--                            th:text="| ${foodPrice+(countProducts*0.5)+3.50} &euro;|" style="color:red"></span></label>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--        </div>-->
-
     </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<footer th:replace="~{fragments/commons::footer}">
+</footer>
 
 </body>
 </html>

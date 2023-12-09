@@ -5,10 +5,10 @@
       xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="~{fragments/commons::head}">
 </head>
+
 <body>
 <header th:replace="~{fragments/commons::nav}">
 </header>
-
 
 <div class="container" style="background-color: #49857b; border-radius: 25px; font-family: Georgia, serif;">
     <h3 class="text-center" style="color: white; margin-top: 10px;">My orders</h3>
@@ -25,7 +25,6 @@
                     <th scope="col" class="text-center">Price</th>
                     <th scope="col" class="text-center">Created on</th>
                     <th scope="col" class="text-center">Status</th>
-                    <!--                    <th scope="col" class="text-center">More details</th>-->
                 </tr>
                 </thead>
 
@@ -48,10 +47,7 @@
 
                     <td th:text="*{orderCondition}" class="text-center" style="background-color: #f4f1ed">Ready</td>
 
-                    <!--                    <td style="text-align: center; background-color: #f4f1ed">-->
-                    <!--                        <a type="button" class="button-detail" style=" background-color: #93b5b1"-->
-                    <!--                           th:href="@{/orders/details/{id}(id=${order.id})}">Details</a>-->
-                    <!--                    </td>-->
+
 
                 </tr>
 
@@ -63,7 +59,8 @@
     </div>
 </div>
 
-
+<footer th:replace="~{fragments/commons::footer}">
+</footer>
 </body>
 </html>
 

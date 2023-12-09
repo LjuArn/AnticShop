@@ -12,4 +12,8 @@ public interface OrderService {
     List<OrderViewModel> getOrdersByUser(String name);
 
     void makeOrder(OrderBindingModel orderBindingModel, String userName);
+
+    List<OrderViewModel> getAllOrders();
+
+    void finishOrder(Long orderId);
 }

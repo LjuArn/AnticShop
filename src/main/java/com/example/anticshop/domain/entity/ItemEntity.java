@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name = "items")
 public class ItemEntity extends BaseEntity {
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 800)
     private String name;
     @Column(length = 4000)
     private String description;

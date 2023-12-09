@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 
 public class ItemBindingModel {
     @NotEmpty
-    @Size(min = 5, max = 20, message = " Name length must be between 5 and 20 characters")
+    @Size(min = 5, max = 800, message = " Name length must be between 5 and 800 characters")
     private String name;
     @Size(min = 5)
     private String description;
