@@ -3,15 +3,16 @@ package com.example.anticshop.domain.viewModel;
 import com.example.anticshop.domain.entity.CartEntity;
 import com.example.anticshop.domain.entity.UserEntity;
 import com.example.anticshop.domain.entity.enums.OrderConditionEnum;
-import jakarta.persistence.*;
 
-import java.time.LocalDate;
+
+
+import java.time.LocalDateTime;
 
 public class OrderViewModel {
 
     private Long id;
     private CartEntity cart;
-    private LocalDate dateOrdered;
+    private LocalDateTime dateOrdered;
     private UserEntity user;
     private OrderConditionEnum orderCondition;
     private String address;
@@ -38,11 +39,11 @@ public class OrderViewModel {
         return this;
     }
 
-    public LocalDate getDateOrdered() {
+    public LocalDateTime getDateOrdered() {
         return dateOrdered;
     }
 
-    public OrderViewModel setDateOrdered(LocalDate dateOrdered) {
+    public OrderViewModel setDateOrdered(LocalDateTime dateOrdered) {
         this.dateOrdered = dateOrdered;
         return this;
     }

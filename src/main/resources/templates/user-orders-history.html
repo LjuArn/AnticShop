@@ -25,7 +25,7 @@
                     <th scope="col" class="text-center">Price</th>
                     <th scope="col" class="text-center">Created on</th>
                     <th scope="col" class="text-center">Status</th>
-<!--                    <th scope="col" class="text-center">More details</th>-->
+                    <!--                    <th scope="col" class="text-center">More details</th>-->
                 </tr>
                 </thead>
 
@@ -38,20 +38,20 @@
                         1
                     </th>
 
-                    <td th:text="${countItems}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+                    <td th:text="${countItems}" class="text-center" style="background-color: #f4f1ed">countItems</td>
 
-                    <td th:text="${itemsPrice}" class="text-center" style="background-color: #f4f1ed">0.00</td>
+                    <td th:text="${itemsPrice}" class="text-center" style="background-color: #f4f1ed">itemsPrice</td>
 
-                    <td th:text="*{dateOrdered}" class="text-center"
+                    <td th:text="*{#temporals.format(dateOrdered,'dd-MM-yyyy HH:mm')}" class="text-center"
                         style="background-color: #f4f1ed">01-01-2010
                     </td>
 
-                    <td th:text="*{orderCondition}" class="text-center" style="background-color: #f4f1ed">Delivered</td>
+                    <td th:text="*{orderCondition}" class="text-center" style="background-color: #f4f1ed">Ready</td>
 
-<!--                    <td style="text-align: center; background-color: #f4f1ed">-->
-<!--                        <a type="button" class="button-detail" style=" background-color: #93b5b1"-->
-<!--                           th:href="@{/orders/details/{id}(id=${order.id})}">Details</a>-->
-<!--                    </td>-->
+                    <!--                    <td style="text-align: center; background-color: #f4f1ed">-->
+                    <!--                        <a type="button" class="button-detail" style=" background-color: #93b5b1"-->
+                    <!--                           th:href="@{/orders/details/{id}(id=${order.id})}">Details</a>-->
+                    <!--                    </td>-->
 
                 </tr>
 
@@ -66,7 +66,6 @@
 
 </body>
 </html>
-
 
 
 <!--                            th:text="*{#temporals.format(dateOrdered,'dd-MM-yyyy')}" class="text-center"-->
