@@ -24,18 +24,17 @@ public class ItemServiceImpl implements ItemService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final CategoryService categoryService;
-    private final UserService userService;
+
 
     public ItemServiceImpl(ItemRepository itemRepository,
                            UserRepository userRepository,
                            ModelMapper modelMapper,
-                           CategoryService categoryService,
-                           UserService userService) {
+                           CategoryService categoryService) {
         this.itemRepository = itemRepository;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.categoryService = categoryService;
-        this.userService = userService;
+
     }
 
     @Override
@@ -94,12 +93,6 @@ public class ItemServiceImpl implements ItemService {
                 .map(itemEntity -> {
                     ItemsViewModel itemsViewModel =
                             modelMapper.map(itemEntity, ItemsViewModel.class);
-
-//                    if (itemEntity.getImageUrl().isEmpty()) {
-//                        itemsViewModel.setImageUrl("/images/SvAleksandar1881.png");
-//                    } else {
-//                        itemsViewModel.setImageUrl(itemEntity.getImageUrl());
-//                    }
 
                     itemsViewModel.setCategory(itemEntity.getCategory().getName());
                     return itemsViewModel;

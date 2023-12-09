@@ -39,10 +39,5 @@ private final UserService userService;
     }
 
 
-
-
-
 }
 
-
-//offerService.getAllOffersNow()

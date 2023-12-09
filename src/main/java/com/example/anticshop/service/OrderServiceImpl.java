@@ -41,9 +41,6 @@ public class OrderServiceImpl implements OrderService {
         order.setSumItemsOrder(user.getCart().getItemsSum());
         orderRepository.saveAndFlush(order);
 
-//        user.getCart().setChosenItems(new ArrayList<>()).setItemsSum(BigDecimal.ZERO);
-//        user.getCart().setCountItems(0L);
-
     }
 
 
