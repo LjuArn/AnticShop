@@ -8,6 +8,7 @@ Then I upgrade it with java spring security. This is a direct ordering site. The
 
 There are test users entered.
 Admin username: ADMIN
-Users: 1. username: niki 2. username: zaza
+Users: 1. username: niki 2. username: zaza.
+
 Error handling: global controller advice for object not found. The white label error page has been replaced with a custom 404.html and 500.html page.
 Scheduling task - every last day of the month all users who are not active are deleted.
