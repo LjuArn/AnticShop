@@ -105,38 +105,6 @@ public class ItemsController {
         return "redirect:/items/all";
     }
 
-    @GetMapping("/edit/{id}")
-    public String getEditItem(@PathVariable("id") Long id, Model model) {
-
-        model.addAttribute("editedItem", itemService.findByIdItem(id));
-
-        return "edit-item";
-    }
-
-
-
-
-    @PatchMapping("/edit/{id}")
-    public String editItem(@PathVariable("id") Long id,
-                           @Valid ItemsViewModel itemsViewModel,
-                           BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes) {
-
-        if (bindingResult.hasErrors()) {
-
-            redirectAttributes.addFlashAttribute("itemsViewModel", itemsViewModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.itemsViewModel", bindingResult);
-
-            return "redirect:edit/{id}";
-
-        }
-
-        itemService.editItem(id, itemsViewModel);
-
-        return "redirect:/items/orders/all";
-    }
-
-
 }
 
 

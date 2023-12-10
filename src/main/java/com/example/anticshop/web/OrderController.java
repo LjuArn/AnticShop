@@ -73,12 +73,9 @@ public class OrderController {
 
 
     @GetMapping("/all/history")
-    public String getAllOrdersHistory(Model model, Principal principal) {
+    public String getAllOrdersHistory(Model model) {
 
         model.addAttribute("allOrders", orderService.getAllOrders());
-//        model.addAttribute("itemsPrice", orderService.);
-
-
         return "all-orders-history";
     }
 

@@ -88,6 +88,7 @@ public class CartServiceImpl implements CartService {
 
     }
 
+    @Transactional
     @Override
     public void removeItemFromTheCart(Long id, String username) {
 

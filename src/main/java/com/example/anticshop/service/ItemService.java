@@ -22,9 +22,4 @@ public interface ItemService {
 
     void deleteItem(Long id);
 
-
-    void editItem(Long id, ItemsViewModel itemsViewModel);
-
-
-
 }

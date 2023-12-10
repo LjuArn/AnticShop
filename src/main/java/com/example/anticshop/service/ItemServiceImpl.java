@@ -109,25 +109,10 @@ public class ItemServiceImpl implements ItemService {
 
 
     @Override
-    public void editItem(Long id, ItemsViewModel itemsViewModel) {
-
-        ItemEntity editedItem = itemRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Item not found"));
-
-        editedItem.setDescription(itemsViewModel.getDescription());
-        editedItem.setPrice(itemsViewModel.getPrice());
-
-        itemRepository.saveAndFlush(editedItem);
-
-    }
-
-
-    @Override
     @Transactional
     public void deleteItem(Long id) {
         itemRepository.deleteById(id);
     }
-
 
 
 }

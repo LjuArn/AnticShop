@@ -32,7 +32,7 @@ public class CartController {
     }
 
     @PatchMapping("/add/{id}")
-    public String addProductToTheCart(@PathVariable("id") Long id,
+    public String addItemsToTheCart(@PathVariable("id") Long id,
                                       Principal principal) {
 
         cartService.addItemToTheCart(id, principal.getName());

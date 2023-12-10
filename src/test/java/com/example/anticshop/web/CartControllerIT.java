@@ -1,9 +1,8 @@
 package com.example.anticshop.web;
 
 
-import com.example.anticshop.domain.entity.ItemEntity;
-import com.example.anticshop.domain.entity.UserEntity;
-import com.example.anticshop.domain.entity.UserRoleEntity;
+import com.example.anticshop.domain.entity.*;
+import com.example.anticshop.domain.entity.enums.CategoryNameEnum;
 import com.example.anticshop.domain.entity.enums.UserRoleEnum;
 import com.example.anticshop.repository.*;
 import org.junit.jupiter.api.AfterEach;
@@ -16,8 +15,12 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -30,9 +33,10 @@ public class CartControllerIT {
 
     UserEntity testUser, testAdmin;
     ItemEntity testOrder, testMedal, testCoin;
+    CartEntity testCart;
 
     @Autowired
-    private ItemRepository mockItemRepository;
+    private static ItemRepository mockItemRepository;
     @Autowired
     private CategoryRepository mockCategoryRepository;
     @Autowired
@@ -47,17 +51,39 @@ public class CartControllerIT {
     @BeforeEach
     void setUp() {
         mockCartRepository.deleteAll();
-        mockItemRepository.deleteAll();
         mockCategoryRepository.deleteAll();
         mockUserRepository.deleteAll();
         mockUserRoleRepository.deleteAll();
         mockOrderRepository.deleteAll();
 
 
+        ItemEntity createTestMedal2 = new ItemEntity()
+                .setName("medalTest1")
+                .setDescription("very fine")
+                .setPrice(BigDecimal.valueOf(222))
+                .setPublished_on(LocalDate.now())
+                .setImageUrl("dsfsffsf")
+                .setYear(1899);
+
+        mockItemRepository.save(createTestMedal2);
+        List<ItemEntity> testList2 = List.of(createTestMedal2);
+
+        testCart = createTestCart();
+        mockCartRepository.saveAndFlush(testCart);
+
+        CategoryEntity testCategoryMedal = new CategoryEntity()
+                .setName(CategoryNameEnum.MEDALS)
+                .setDescription("Some Bulgarian royal orders from 1887 to 1943")
+                .setItems(testList2);
+
+        mockCategoryRepository.saveAndFlush(testCategoryMedal);
+
+
         UserRoleEntity adminRole = new UserRoleEntity().setUserRole(UserRoleEnum.ADMIN);
         UserRoleEntity userRole = new UserRoleEntity().setUserRole(UserRoleEnum.USER);
         mockUserRoleRepository.saveAndFlush(userRole);
         mockUserRoleRepository.saveAndFlush(adminRole);
+
 
         testUser = createTestUser();
         testUser.setRoles(List.of(userRole));
@@ -74,15 +100,13 @@ public class CartControllerIT {
     @AfterEach
     void tearDown() {
         mockCartRepository.deleteAll();
-        mockItemRepository.deleteAll();
         mockUserRepository.deleteAll();
         mockUserRoleRepository.deleteAll();
         mockCategoryRepository.deleteAll();
     }
 
 
-
- @Test
+    @Test
     @WithMockUser(username = "gosho777", roles = "USER")
     void testGetCart() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/cart"))
@@ -97,25 +121,42 @@ public class CartControllerIT {
 
     @Test
     @WithMockUser(username = "gosho777", roles = "USER")
-    void testRegistration() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/users/register"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("register"))
-                .andExpect(model().attributeExists("userRegisterBindingModel"));
+    void testAddItemsToTheCartWorksCorrectly() throws Exception {
+
+        mockMvc.perform(patch("/cart/add/{id}", testCart.getId())
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/items/all"));
+
     }
 
 
+    @Test
+    @WithMockUser(username = "gosho777", roles = "USER")
+    void testRemoveItemFromCartWorksCorrectly() throws Exception {
+
+        mockMvc.perform(patch("/cart/remove/{id}", testCart.getId())
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/cart"));
+
+    }
 
 
-
-
-
-
-
-
-
-
-
+    private static CartEntity createTestCart() {
+        ItemEntity createTestMedal1 = new ItemEntity()
+                .setName("medalTest1")
+                .setDescription("very fine")
+                .setPrice(BigDecimal.valueOf(222))
+                .setPublished_on(LocalDate.now())
+                .setImageUrl("dsfsffsf")
+                .setYear(1899);
+        mockItemRepository.saveAndFlush(createTestMedal1);
+        return new CartEntity()
+                .setItemsSum(BigDecimal.valueOf(56))
+                .setCountItems(3L)
+                .setChosenItems(List.of(createTestMedal1));
+    }
 
     private static UserEntity createTestAdmin() {
         return new UserEntity()
@@ -137,26 +178,3 @@ public class CartControllerIT {
 }
 
 
-
-//
-//    @Test
-//    @WithMockUser(username = "user1", roles = "USER")
-//    void testAddingProductToCart_WorksCorrectly() throws Exception {
-//
-//        mockMvc.perform(MockMvcRequestBuilders.patch("/cart/add/{id}", pizzaOne.getId())
-//                        .with(csrf()))
-//                .andExpect(status().is3xxRedirection())
-//                .andExpect(redirectedUrl("/menu/pizza"));
-//
-//    }
-//
-//    @Test
-//    @WithMockUser(username = "user1", roles = "USER")
-//    void testRemoveFromCart_WorksCorrectly() throws Exception {
-//
-//        mockMvc.perform(patch("/cart/remove/{id}", burgerOne.getId())
-//                        .param("id", burgerOne.getId().toString()).with(csrf()))
-//                .andExpect(status().is3xxRedirection())
-//                .andExpect(redirectedUrl("/cart"));
-//
-//    }
