@@ -29,8 +29,10 @@ public class SecurityConfiguration {
                         .requestMatchers("/about", "/error").permitAll()
                         .requestMatchers("/favicon.ico", "/resources/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/offers/**").permitAll()
-                        .requestMatchers("/users/profile", "/cart", "/cart/add/{id}", "/cart/remove/{id}").authenticated()
-                        .requestMatchers("/brands", "/items/edit/{id}").hasRole(UserRoleEnum.ADMIN.name())
+                        .requestMatchers( "/cart", "/cart/add/{id}", "/cart/remove/{id}").authenticated()
+                        .requestMatchers("/orders/finalize","/orders/history").authenticated()
+                        .requestMatchers("items/orders/all", "/items/medals/all", "/items/coins/all", "/items/all" ).authenticated()
+                        .requestMatchers( "/items/edit/{id}").hasRole(UserRoleEnum.ADMIN.name())
                         .requestMatchers("/items/add", "/users/all", "/orders/all/history").hasRole(UserRoleEnum.ADMIN.name())
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> {
