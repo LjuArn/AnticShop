@@ -31,20 +31,21 @@ body {
 
 .wrapper {
      display: grid;
-     grid-gap: 20px;
+     grid-gap: 120px;
 }
 
 
 /* About */
 .info {
-     margin-top: 5rem;
+     margin-top: 2rem;
      display: grid;
-     grid-gap: 2rem;
-     grid-template-columns: 1fr 1fr 1fr;
+     grid-gap: 18rem;
+     grid-template-columns: 18fr 8fr 18fr;
      background-color: #005cbf;
      color: white;
      padding: 5rem;
      border-radius: 5rem;
+
 }
 
 .info div {
@@ -54,15 +55,16 @@ body {
 .info div:nth-child(1) {
      background-image: url("/images/Order_Brave.jpg");
      background-size: cover;
-     border-bottom-right-radius: 5rem;
-     border-top-left-radius: 5rem;
+     border-bottom-right-radius: 3rem;
+     border-top-left-radius: 3rem;
+
 }
 
 .info div:nth-child(3) {
      background-image: url("/images/twost.png");
      background-size: cover;
-     border-bottom-left-radius: 5rem;
-     border-top-right-radius: 5rem;
+     border-bottom-left-radius: 3rem;
+     border-top-right-radius: 3rem;
 }
 
 
