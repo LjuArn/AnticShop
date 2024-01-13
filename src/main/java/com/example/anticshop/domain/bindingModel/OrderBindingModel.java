@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 public class OrderBindingModel {
 
 
-    @Size(min = 5, message = " Address length must be min 5  characters")
+    @Size(min = 5, message = "Address length must be min 5 characters!!!!!!!!!!!!")
     private String address;
 
-    @Size(min = 11, max = 20)
+    @Size(min = 10, max = 20)
     private String gsm;
 
     @Future

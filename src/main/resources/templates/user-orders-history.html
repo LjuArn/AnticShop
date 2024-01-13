@@ -10,16 +10,25 @@
 <header th:replace="~{fragments/commons::nav}">
 </header>
 
-<div class="container" style="background-color: #49857b; border-radius: 25px; font-family: Georgia, serif;">
-    <h3 class="text-center" style="color: white; margin-top: 10px;">My orders</h3>
+<div class="container" style="background-color: #49857b;
+border-radius: 25px; font-family: Georgia, serif;
+     margin-top: 105px;
+     margin-bottom: 60px;
+     width: 88%;
+     margin-left: auto;
+     margin-right: auto;
+padding-top: 10px">
+
+
+    <h3 class="text-center" style="color: yellow; margin-top: 8px;">My orders</h3>
 
     <div class="row">
         <div class="col-12">
+
             <table class="table table-bordered mt-4">
 
                 <thead>
-
-                <tr style="background-color: #3a6661; color: white">
+                <tr style="background-color: #3a6661; color: yellow">
                     <th scope="col" class="text-center">Id</th>
                     <th scope="col" class="text-center">Count of items</th>
                     <th scope="col" class="text-center">Price</th>
@@ -33,20 +42,19 @@
                 <tr th:each="order: ${orders}"
                     th:object="${order}">
 
-                    <th scope="row" th:text="*{id}" class="text-center" style="background-color: #93b5b1; color: white">
+                    <th scope="row" th:text="*{id}" class="text-center" style="background-color: #34ce57">
                         1
                     </th>
 
-                    <td th:text="${countItems}" class="text-center" style="background-color: #f4f1ed">countItems</td>
+                    <td th:text="${countItems}" class="text-center" style="background-color: #34ce57">countItems</td>
 
-                    <td th:text="${itemsPrice}" class="text-center" style="background-color: #f4f1ed">itemsPrice</td>
+                    <td th:text="${itemsPrice}" class="text-center" style="background-color: #34ce57">itemsPrice</td>
 
                     <td th:text="*{#temporals.format(dateOrdered,'dd-MM-yyyy HH:mm')}" class="text-center"
-                        style="background-color: #f4f1ed">01-01-2010
+                        style="background-color: #34ce57">01-01-2010
                     </td>
 
-                    <td th:text="*{orderCondition}" class="text-center" style="background-color: #f4f1ed">Ready</td>
-
+                    <td th:text="*{orderCondition}" class="text-center" style="background-color: #34ce57">Ready</td>
 
 
                 </tr>

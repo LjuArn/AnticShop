@@ -5,74 +5,143 @@
       xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="~{fragments/commons::head}">
 </head>
+
+
 <body>
 <header th:replace="~{fragments/commons::nav}">
 </header>
 
 
+
 <div >
-<!--    class="row" style="font-family: Georgia, serif;"-->
 
-    <div class="container-fluid">
+   <!-- <div class="container-fluid"> -->
+   <!--<div class="container-cart rounded">-->
 
-<!--    <div class="container-cart rounded">-->
+<!--        <div class="table-wrapper-scroll-y my-custom-scrollbar">-->
 
-        <h2 class="text-center  mt-5" style="font-family: Georgia, serif; color: #34ce57">Cart</h2>
-<!--        <h3 class="text-center mb-3" style="color: #2c504a">Cart</h3>-->
+<!--            <table class=" table-cart text-center text-warning" style="height: 68.5vh;-->
+<!--                overflow: auto; width:70%; margin-left: auto; margin-right: auto;-->
+<!--                border-top-left-radius:38px; border-top-right-radius: 38px;-->
+<!--                 border-bottom-left-radius: 0; border-bottom-right-radius: 0;-->
+<!--                 background-color: #34ce57">-->
+
+
+<!--                <h1 class="text-center  mt-5" style="font-family: Georgia, serif; color: #34ce57">Cart</h1>-->
+<!--                <br>-->
+
+<!--                <tr th:each="item : ${cartItems}"-->
+<!--                    th:object="${item}">-->
+
+<!--                    <td  th:text="*{name}" class="product-name">Name</td>-->
+
+<!--                    <td  th:text="*{description}" class="description">description</td>-->
+
+<!--                    <td th:text="*{price}" class="price text-center">price</td>-->
+
+<!--                    <td>-->
+
+<!--                        <form th:method="PATCH"-->
+<!--                              th:action="@{/cart/remove/{id}(id = *{id})}"-->
+<!--                              th:object="${item}">-->
+<!--                            <button class="remove-button" type="submit">Remove-->
+<!--                            </button>-->
+<!--                        </form>-->
+
+<!--                    </td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td></td>-->
+<!--                    <td style="text-align: end; color:orange; font-weight: bold;">-->
+<!--                        Total:-->
+<!--                    </td>-->
+<!--                    <td style=" text-align: center; color: white; font-weight: bold;" th:text="${itemsPrice}">-->
+<!--                    </td>-->
+<!--                    <td></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </div>-->
 
 
 
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="container" style="background-color: #34ce57;
+            border-radius: 25px; font-family: Georgia, serif;
+            margin-top: 105px;
+            margin-bottom: 60px;
+            width: 88%;
+            margin-left: auto;
+            margin-right: auto;
+             padding-top: 10px">
 
-            <table class="table table-cart text-center text-warning" style="height: 68.5vh;
-                overflow: auto; width:70%; margin-left: auto; margin-right: auto;
-                border-top-left-radius:25px; border-top-right-radius: 25px;
-                 border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-color: #34ce57">
+                <h3 class="text-center" style="color: yellow; margin-top: 8px;">My cart</h3>
 
-                <tr th:each="item : ${cartItems}"
-                    th:object="${item}">
+                <div class="row">
+                    <div class="col-12">
 
-                    <td class="product-name" th:text="*{name}">Name</td>
+                        <table class="table table-bordered mt-4">
 
-                    <td class="description" th:text="*{description}">description</td>
+                           <thead>
+                               <tr style="background-color: #3a6661; color: yellow">
+                                   <th scope="col" class="text-center">Number by order</th>
+                                   <th scope="col" class="text-center">Name</th>
+                                   <th scope="col" class="text-center">Description</th>
+                                   <th scope="col" class="text-center">Price</th>
+                                  <th scope="col" class="text-center">Button</th>
+                               </tr>
+                           </thead>
 
-                    <td th:text="*{price}" class="price text-center">price</td>
+                           <tbody>
 
-                    <td>
+                              <tr th:each="item : ${cartItems}"
+                                  th:object="${item}">
+                               <th scope="row" th:text="*{id}" class="item-order" >
+                                 1
+                               </th>
 
-                        <form th:method="PATCH"
-                              th:action="@{/cart/remove/{id}(id = *{id})}"
-                              th:object="${item}">
-                            <button class="remove-button" type="submit"
-                                    style="border-color: white"
-                            >Remove
-                            </button>
-                        </form>
+                                 <td  th:text="*{name}" class="product-name">Name</td>
 
-                    </td>
-                </tr>
+                                 <td  th:text="*{description}" class="description">description</td>
 
-                <tr>
-                    <td></td>
-                    <td style="text-align: end; color:orange; font-weight: bold;">
-                        Total:
-                    </td>
-                    <td style=" text-align: center; color: white; font-weight: bold;" th:text="${itemsPrice}">
-                    </td>
-                    <td></td>
-                </tr>
+                                 <td th:text="*{price}" class="price text-center">price</td>
 
-            </table>
+                                <td>
 
+                                    <form th:method="PATCH"
+                                          th:action="@{/cart/remove/{id}(id = *{id})}"
+                                          th:object="${item}">
+                                         <button class="remove-button" type="submit">Remove</button>
+                                    </form>
+                                </td>
+                              </tr>
+
+                           </tbody>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td style="text-align: end; color:orange; font-weight: bold;">
+                                    Total:
+                                </td>
+                                <td style="text-align: center; color: white; font-weight: bold;" th:text="${itemsPrice}">
+                                </td>
+                                <td></td>
+                            </tr>
+
+                         </table>
+
+
+
+                    </div>
+                </div>
+
+
+               <div class="mt-2" style="margin-left: 800px; margin-bottom: 5px;">
+                         <a class="finalize-order justify-content-center"
+                            th:if="${cartItems.size()!=0}"
+                            th:href="@{/orders/finalize}">Finalize order</a>
+               </div>
         </div>
-
-
-        <div class="mt-2" style="margin-right: 0; margin-left: 950px;">
-            <a class="finalize-order justify-content-center" th:if="${cartItems.size()!=0}"
-               th:href="@{/orders/finalize}">Finalize order</a>
-        </div>
-
-    </div>
 </div>
 
 

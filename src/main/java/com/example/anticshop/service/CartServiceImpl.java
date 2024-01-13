@@ -68,6 +68,10 @@ public class CartServiceImpl implements CartService {
                 .orElseThrow(() -> new ObjectNotFoundException("User with username" + username + "not found"));
 
 
+        // new add//
+        if (user.getCart() == null) {
+            user.setCart(getNewCart());
+        }
         return user
                 .getCart()
                 .getChosenItems()
@@ -83,6 +87,12 @@ public class CartServiceImpl implements CartService {
     public BigDecimal getItemsPrice(String username) {
         UserEntity user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ObjectNotFoundException("User with username" + username + "not found"));
+
+        // new add//
+        if (user.getCart() == null) {
+            user.setCart(getNewCart());
+        }
+
 
         return user.getCart().getItemsSum();
 
