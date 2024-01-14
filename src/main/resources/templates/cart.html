@@ -65,7 +65,7 @@
 
 
 
-        <div class="container" style="background-color: #34ce57;
+        <div class="container" style="background-color: #49857b;
             border-radius: 25px; font-family: Georgia, serif;
             margin-top: 105px;
             margin-bottom: 60px;
@@ -83,7 +83,7 @@
 
                            <thead>
                                <tr style="background-color: #3a6661; color: yellow">
-                                   <th scope="col" class="text-center">Number by order</th>
+                                   <th scope="col" class="text-center">Number of item</th>
                                    <th scope="col" class="text-center">Name</th>
                                    <th scope="col" class="text-center">Description</th>
                                    <th scope="col" class="text-center">Price</th>
@@ -95,17 +95,17 @@
 
                               <tr th:each="item : ${cartItems}"
                                   th:object="${item}">
-                               <th scope="row" th:text="*{id}" class="item-order" >
+                               <th scope="row" th:text="*{id}" class="item-order" style="background-color: #34ce57">
                                  1
                                </th>
 
-                                 <td  th:text="*{name}" class="product-name">Name</td>
+                                 <td  th:text="*{name}" class="product-name" style="background-color: #34ce57">Name</td>
 
-                                 <td  th:text="*{description}" class="description">description</td>
+                                 <td  th:text="*{description}" class="description" style="background-color: #34ce57">description</td>
 
-                                 <td th:text="*{price}" class="price text-center">price</td>
+                                 <td th:text="*{price}" class="price text-center" style="background-color: #34ce57">price</td>
 
-                                <td>
+                                <td style="background-color: #34ce57">
 
                                     <form th:method="PATCH"
                                           th:action="@{/cart/remove/{id}(id = *{id})}"
@@ -118,14 +118,11 @@
                            </tbody>
 
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td style="text-align: end; color:orange; font-weight: bold;">
-                                    Total:
-                                </td>
-                                <td style="text-align: center; color: white; font-weight: bold;" th:text="${itemsPrice}">
-                                </td>
-                                <td></td>
+                                <td style="background-color: #34ce57"></td>
+                                <td style="background-color: #34ce57"></td>
+                                <td style="text-align: end; color:orange; font-weight: bold; background-color: #34ce57">Total:</td>
+                                <td style="text-align: center; color: orange; font-weight: bold; background-color: #34ce57" th:text="${itemsPrice}"></td>
+                                <td style="background-color: #34ce57"></td>
                             </tr>
 
                          </table>

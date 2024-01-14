@@ -69,9 +69,9 @@ public class CartServiceImpl implements CartService {
 
 
         // new add//
-        if (user.getCart() == null) {
-            user.setCart(getNewCart());
-        }
+//        if (user.getCart() == null) {
+//            user.setCart(getNewCart());
+//        }
         return user
                 .getCart()
                 .getChosenItems()
@@ -89,9 +89,9 @@ public class CartServiceImpl implements CartService {
                 .orElseThrow(() -> new ObjectNotFoundException("User with username" + username + "not found"));
 
         // new add//
-        if (user.getCart() == null) {
-            user.setCart(getNewCart());
-        }
+//        if (user.getCart() == null) {
+//            user.setCart(getNewCart());
+//        }
 
 
         return user.getCart().getItemsSum();

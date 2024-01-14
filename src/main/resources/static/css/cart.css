@@ -2,17 +2,7 @@ body {
      background-color: white;
 }
 
-.remove-button {
-     border-radius: 25px;
-     border-style: none;
-     text-decoration: none;
-     background-color: white;
-     border-color: red;
-     color: #2c504a;
-     display: flex;
-}
-
- .item-order {
+.item-order {
      width: 5%;
 }
 
@@ -24,9 +14,18 @@ body {
      width: 55%;
 }
 
+.remove-button {
+     border-radius: 25px;
+     text-decoration: none;
+     background-color: yellow;
+     border: 1px none red;
+     color: rebeccapurple;
+     display: flex;
+}
+
 .remove-button:hover {
-     background-color: #2c504a;
-     color: white;
+     background-color: rebeccapurple;
+     color: yellow;
      transition: all 2000ms ease;
 }
 
@@ -48,16 +47,16 @@ body {
      margin-right: 230px;
      border-radius: 25px;
      border-style: none;
-     background-color: #49857b;
-     color: white;
+     background-color: yellow;
+     color: rebeccapurple;
      text-decoration: none;
      display: flex;
      width: 94%;
 }
 
 .finalize-order:hover {
-     background-color: #2c504a;
-     color: white;
+     background-color: rebeccapurple;
+     color: yellow;
      transition: all 2000ms ease;
 }
 
