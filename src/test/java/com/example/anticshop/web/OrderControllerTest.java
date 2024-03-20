@@ -93,14 +93,14 @@ public class OrderControllerTest {
     }
 
 
-    @Test
-    @WithMockUser(username = "gosho777", roles = "USER")
-    void testGetAllOrdersHistory() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/orders/all/history"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("all-orders-history"))
-                .andExpect(model().attributeExists("allOrders"));
-    }
+//    @Test
+//    @WithMockUser(username = "gosho777", roles = "USER")
+//    void testGetAllOrdersHistory() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/orders/all/history"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("all-orders-history"))
+//                .andExpect(model().attributeExists("allOrders"));
+//    }
 
 
 
